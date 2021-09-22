@@ -1,0 +1,8 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Reloaded.Mod.Launcher.Theme.Halogen">
+
+    <!-- Modified copy of Theme/Halogen/Images.xaml -->
+    <ImageSource x:Key="IconRegravitified">pack://siteoforigin:,,,/Theme/Regrav/Images/SRRG_Green.png</ImageSource>
+
+</ResourceDictionary>

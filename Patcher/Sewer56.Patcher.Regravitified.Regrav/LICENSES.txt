@@ -1,0 +1,95 @@
+Copyright (c) 2021 Extreme Gear Labs
+
+This work is licensed under the Creative Commons Attribution-NonCommercial-NoDerivatives 4.0 International License.
+
+To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-nd/4.0/legalcode
+or send a letter to Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+All redistribution of "Sonic Riders Regravitified Version 1.0" must come with a copy of this license file.
+
+----------------------------------------------------------------------------------
+
+CONTENT WITHIN THE MOD:
+
+All modifications available through Sonic Riders DX Version 1.0, including, without
+limitation, content in the form of software, text, graphics, code, and videos, is 
+protected work. All original content found within these modifications 
+is the sole property of their respective owners and is not to be redistributed
+or reused with expressed consent.
+
+---------------------------------------------------
+This project uses software created by Xithyl_kykorl
+---------------------------------------------------
+Copyright (c) 2021 Xithyl_kykorl
+
+All rights reserved.
+
+--------------------------------------------
+This project uses software created by Yacker
+--------------------------------------------
+Copyright (c) 2021 Yacker
+
+All rights reserved.
+
+------------------------------------------------
+This project uses software created by AirKingNeo
+------------------------------------------------
+Copyright (c) 2021 AirKingNeo
+
+All rights reserved.
+
+-----------------------------------------------------
+This project uses music composed & arranged by Cxldr3
+-----------------------------------------------------
+Copyright 2020. All Rights Reserved.
+Link to the song used: https://youtu.be/3EihmSuvwPQ
+
+---------------------------------------------
+This project uses software created by Sewer56
+---------------------------------------------
+Copyright 2021 Sewer56
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated 
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation 
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and 
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE 
+WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR 
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, 
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+-------------------------------------------
+This project uses software created by Wiimm
+-------------------------------------------
+Wiimm's ISO Tool
+
+This program is free software;
+you can redistribute it and/or modify it under the terms of the
+GNU General Public License as published by the Free Software Foundation;
+either version 2 of the License, or (at your option) any later version.
+
+------------------------------------------------------
+This project uses software created by Joshua MacDonald
+------------------------------------------------------
+xdelta3
+
+Copyright (C) Joshua McDonald
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
