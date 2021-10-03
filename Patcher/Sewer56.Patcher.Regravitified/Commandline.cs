@@ -3,14 +3,15 @@ using CommandLine.Text;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using Sewer56.Patcher.Regravitified.Lib;
-using Sewer56.Patcher.Regravitified.Lib.Model;
-using static Sewer56.Patcher.Regravitified.Cmd.Options;
+using static Sewer56.Patcher.Riders.Cmd.Options;
 using System.Threading.Tasks;
-using Sewer56.Patcher.Regravitified.Cmd;
-using Sewer56.Patcher.Regravitified.Lib.Utility;
+using Sewer56.DeltaPatchGenerator.Lib;
+using Sewer56.DeltaPatchGenerator.Lib.Model;
+using Sewer56.DeltaPatchGenerator.Lib.Utility;
+using Sewer56.Patcher.Riders.Cmd;
+using Sewer56.Patcher.Riders.Common.Utility;
 
-namespace Sewer56.Patcher.Regravitified
+namespace Sewer56.Patcher.Riders
 {
     /// <summary>
     /// Stores the commandline 
@@ -29,7 +30,7 @@ namespace Sewer56.Patcher.Regravitified
                 with.AutoVersion = true;
             });
 
-            var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions, 
+            var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions,
                 ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO>(args);
 
             var tasks = new List<Task>
@@ -51,7 +52,7 @@ namespace Sewer56.Patcher.Regravitified
         private Task ApplyPatches(ApplyPatchesOptions obj)
         {
             using var progressBar = new ProgressBar();
-            var patches   = PatchData.FromDirectories(obj.Patches);
+            var patches = PatchData.FromDirectories(obj.Patches);
             var patchSpan = patches.ToArray().AsSpan();
             Patch.Apply(patchSpan, obj.Source, obj.Source, (text, progress) => progressBar.Report(progress, text));
             return Task.CompletedTask;
@@ -159,6 +160,7 @@ namespace Sewer56.Patcher.Regravitified
             {
                 help.Copyright = "Created by Sewer56, licensed under GNU GPL V3";
                 help.AutoHelp = false;
+                help.AutoVersion = false;
                 help.AddDashesToOption = true;
                 help.AddEnumValuesToHelpText = true;
                 return HelpText.DefaultParsingErrorsHandler(options, help);

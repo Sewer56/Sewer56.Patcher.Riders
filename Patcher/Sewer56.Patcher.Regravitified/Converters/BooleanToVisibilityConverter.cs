@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Windows;
 using System.Windows.Data;
 
-namespace Sewer56.Patcher.Regravitified.Converters
+namespace Sewer56.Patcher.Riders.Converters
 {
     public class BooleanToVisibilityConverter : IValueConverter
     {

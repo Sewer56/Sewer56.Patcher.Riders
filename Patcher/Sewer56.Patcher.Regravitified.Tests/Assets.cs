@@ -1,7 +1,7 @@
 ﻿using System.IO;
-using Sewer56.Patcher.Regravitified.Lib.Utility;
+using Sewer56.DeltaPatchGenerator.Lib.Utility;
 
-namespace Sewer56.Patcher.Regravitified.Tests
+namespace Sewer56.Patcher.Riders.Tests
 {
     public static class Assets
     {

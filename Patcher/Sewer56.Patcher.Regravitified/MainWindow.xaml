@@ -1,13 +1,12 @@
 ﻿<default:ReloadedWindow  xmlns:default="clr-namespace:Reloaded.WPF.Theme.Default;assembly=Reloaded.WPF.Theme.Default" 
-                         x:Class="Sewer56.Patcher.Regravitified.MainWindow"
+                         x:Class="Sewer56.Patcher.Riders.MainWindow"
                          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                         xmlns:converters="clr-namespace:Sewer56.Patcher.Regravitified.Converters"
-                         xmlns:local="clr-namespace:Sewer56.Patcher.Regravitified"
+                         xmlns:converters="clr-namespace:Sewer56.Patcher.Riders.Converters"
                          mc:Ignorable="d"
-                         Title="Regravitified Patcher" Height="Auto" Width="Auto" 
+                         Title="{DynamicResource PatcherTitle}" Height="Auto" Width="Auto" 
                          SizeToContent="WidthAndHeight"
                          Style="{DynamicResource ReloadedWindow}">
     <Grid Margin="{DynamicResource PageMargin}" DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
@@ -17,7 +16,7 @@
             <Image x:Name="Banner"
                    Style="{DynamicResource HighQualityImage}"
                    MaxWidth="600"
-                   Source="{DynamicResource IconRegravitified}"
+                   Source="{DynamicResource IconGame}"
                    StretchDirection="Both"
                    Margin="{DynamicResource BannerMargin}"/>
 

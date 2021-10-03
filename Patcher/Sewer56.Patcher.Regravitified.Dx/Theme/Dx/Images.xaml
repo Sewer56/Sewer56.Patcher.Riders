@@ -3,6 +3,6 @@
                     xmlns:local="clr-namespace:Reloaded.Mod.Launcher.Theme.Halogen">
 
     <!-- Modified copy of Theme/Halogen/Images.xaml -->
-    <ImageSource x:Key="IconGame">pack://siteoforigin:,,,/Theme/Regrav/Images/SRRG_Green.png</ImageSource>
+    <ImageSource x:Key="IconGame">pack://siteoforigin:,,,/Theme/Dx/Images/SRDX_VER1.png</ImageSource>
 
 </ResourceDictionary>

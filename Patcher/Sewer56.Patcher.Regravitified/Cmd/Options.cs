@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace Sewer56.Patcher.Regravitified.Cmd
+namespace Sewer56.Patcher.Riders.Cmd
 {
     public class Options
     {

@@ -1,9 +1,9 @@
 using System;
 using System.IO;
-using Sewer56.Patcher.Regravitified.Lib;
+using Sewer56.DeltaPatchGenerator.Lib;
 using Xunit;
 
-namespace Sewer56.Patcher.Regravitified.Tests
+namespace Sewer56.Patcher.Riders.Tests
 {
     public class PatchTests
     {

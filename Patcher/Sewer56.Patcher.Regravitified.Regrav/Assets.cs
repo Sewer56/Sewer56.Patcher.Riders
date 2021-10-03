@@ -1,11 +1,11 @@
 ﻿using System.IO;
-using Sewer56.Patcher.Regravitified.Lib.Utility;
+using Sewer56.DeltaPatchGenerator.Lib.Utility;
 
-namespace Sewer56.Patcher.Regravitified.Regrav
+namespace Sewer56.Patcher.Riders.Regrav
 {
     public class Assets
     {
-        public static readonly string AssetsFolder = Path.Combine(Paths.ProgramFolder, "Assets");
+        public static readonly string AssetsFolder = Path.Combine(Paths.ProgramFolder, "Assets/RG");
 
         public static readonly string TempFolder = Path.Combine(Paths.ProgramFolder, "Working");
 

@@ -3,18 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Regravitified", "Sewer56.Patcher.Regravitified\Sewer56.Patcher.Regravitified.csproj", "{9CE477DA-4540-4110-AFF5-455B658ECD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders", "Sewer56.Patcher.Regravitified\Sewer56.Patcher.Riders.csproj", "{9CE477DA-4540-4110-AFF5-455B658ECD6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Regravitified.Tests", "Sewer56.Patcher.Regravitified.Tests\Sewer56.Patcher.Regravitified.Tests.csproj", "{E09C30D9-7F41-4AFE-945F-B3FDCED6CAD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Tests", "Sewer56.Patcher.Regravitified.Tests\Sewer56.Patcher.Riders.Tests.csproj", "{E09C30D9-7F41-4AFE-945F-B3FDCED6CAD5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Regravitified.Lib", "Sewer56.Patcher.Regravitified.Lib\Sewer56.Patcher.Regravitified.Lib.csproj", "{92291413-6C36-4DB1-80EF-61EAC9BCC07D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Common", "Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj", "{92291413-6C36-4DB1-80EF-61EAC9BCC07D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Regravitified.Regrav", "Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Regravitified.Regrav.csproj", "{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Regrav", "Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj", "{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodules", "Submodules", "{0EC63F93-1766-4789-8E9E-192849A402B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.DeltaPatchGenerator.Lib", "Submodules\Sewer56.DeltaPatchGenerator\Sewer56.DeltaPatchGenerator.Lib\Sewer56.DeltaPatchGenerator.Lib.csproj", "{E25CC718-B90E-4D23-8C25-C0174860D7E4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Dx", "Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj", "{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCDiff", "Submodules\Sewer56.DeltaPatchGenerator\Submodules\vcdiff\src\VCDiff\VCDiff.csproj", "{679B4698-DD66-46A7-AE39-285A87195565}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Sewer56.Patcher.Regravitified.Assets\Sewer56.Patcher.Regravitified.Assets.projitems*{9ce477da-4540-4110-aff5-455b658ecd6a}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -36,9 +41,25 @@ Global
 		{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E25CC718-B90E-4D23-8C25-C0174860D7E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E25CC718-B90E-4D23-8C25-C0174860D7E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E25CC718-B90E-4D23-8C25-C0174860D7E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E25CC718-B90E-4D23-8C25-C0174860D7E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Release|Any CPU.Build.0 = Release|Any CPU
+		{679B4698-DD66-46A7-AE39-285A87195565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{679B4698-DD66-46A7-AE39-285A87195565}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{679B4698-DD66-46A7-AE39-285A87195565}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{679B4698-DD66-46A7-AE39-285A87195565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E25CC718-B90E-4D23-8C25-C0174860D7E4} = {0EC63F93-1766-4789-8E9E-192849A402B8}
+		{679B4698-DD66-46A7-AE39-285A87195565} = {0EC63F93-1766-4789-8E9E-192849A402B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6898F0CD-6F51-46F3-ACFD-DD527FCB83D9}

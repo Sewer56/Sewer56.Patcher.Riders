@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading.Tasks;
-using Reloaded.WPF.Theme.Default;
+﻿using System.Threading.Tasks;
 using System.Windows;
-using Sewer56.Patcher.Regravitified.ViewModel;
+using Reloaded.WPF.Theme.Default;
+using Sewer56.Patcher.Riders.ViewModel;
 
-namespace Sewer56.Patcher.Regravitified
+namespace Sewer56.Patcher.Riders
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

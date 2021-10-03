@@ -1,15 +1,19 @@
-﻿using System;
+﻿// ReSharper disable RedundantUsingDirective
+using System;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Threading;
 using Ookii.Dialogs.Wpf;
 using Reloaded.WPF.MVVM;
-using Sewer56.Patcher.Regravitified.Dialogs;
-using Sewer56.Patcher.Regravitified.Regrav;
+#if SRDX
+using Sewer56.Patcher.Riders.Dx;
+#elif REGRAV
+using Sewer56.Patcher.Riders.Regrav;
+#endif
 
-namespace Sewer56.Patcher.Regravitified.ViewModel
+namespace Sewer56.Patcher.Riders.ViewModel
 {
     public class MainWindowViewModel : ObservableObject
     {
@@ -33,8 +37,14 @@ namespace Sewer56.Patcher.Regravitified.ViewModel
             IsPatching = true;
             try
             {
-                ShowDialog("The one and only step.", "Please select a Wii ROM of Sonic Riders: Zero Gravity to patch.\n" +
-                                                     "Once started, the patching process will take up to 5 minutes.");
+#if SRDX
+                var gamePatch = new DxPatch();
+#elif REGRAV
+                var gamePatch = new RegravitifiedPatch();
+#endif
+
+                if (gamePatch.GetInstructionDialog(out var title, out var text))
+                    ShowDialog(title, text);
 
                 // Select ROM
                 if (!TrySelectIsoFile(out var fileName))
@@ -42,8 +52,8 @@ namespace Sewer56.Patcher.Regravitified.ViewModel
 
                 // Select Output
                 var timer = Stopwatch.StartNew();
-                var outputPath = Path.Combine(Path.GetDirectoryName(fileName), "Sonic Riders Regravitified.wbfs");
-                await PatchToRegrav.Patch(fileName, outputPath, (text, progress) =>
+                var outputPath = Path.Combine(Path.GetDirectoryName(fileName), gamePatch.FileName);
+                await gamePatch.ApplyPatch(fileName, outputPath, (text, progress) =>
                 {
                     Progress = progress * 100;
                     CurrentPatchingStep = text;
@@ -51,6 +61,17 @@ namespace Sewer56.Patcher.Regravitified.ViewModel
 
                 ShowDialog("Patch Success", $"New ROM Saved to: {outputPath}\n" +
                                             $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec");
+            }
+            catch (AggregateException ex)
+            {
+                var text = new StringBuilder();
+                for (var x = 0; x < ex.InnerExceptions.Count; x++)
+                {
+                    var exception = ex.InnerExceptions[x];
+                    text.AppendLine($"{x}. {exception.Message}\n{exception.StackTrace}");
+                }
+
+                ShowDialog("Failed to Convert ROM (Unexpected Error)", text.ToString());
             }
             catch (Exception error)
             {

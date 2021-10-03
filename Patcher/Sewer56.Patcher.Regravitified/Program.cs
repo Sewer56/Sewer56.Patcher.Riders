@@ -1,7 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace Sewer56.Patcher.Regravitified
+namespace Sewer56.Patcher.Riders
 {
     public class Program
     {

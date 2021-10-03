@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net5.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>preview</LangVersion>
+    <StartupObject>Sewer56.Patcher.Riders.Program</StartupObject>
+
+    <!-- Needed for functional console -->
+    <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
+
+    <!-- 
+          Please see CleanupOnPublish for code for removing files.
+
+          Valid values:
+          SRDX
+          REGRAV
+    -->
+    <DefineConstants>SRDX</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Theme/**">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="Ookii.Dialogs.Wpf" Version="4.0.0" />
+    <PackageReference Include="PropertyChanged.Fody" Version="3.4.0">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Reloaded.WPF.Animations" Version="1.2.3" />
+    <PackageReference Include="Reloaded.WPF.Theme.Default" Version="3.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj" />
+    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj" Condition="$(DefineConstants.Contains(SRDX))" />
+    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LICENSE.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+
+  </ItemGroup>
+  
+  <Target Name="CleanupOnPublish" AfterTargets="Publish">
+    <Message Importance="high" Text="Publish directory = $(PublishDir)" />
+    <Exec Command="del /F /Q $(PublishDir)*.pdb" />
+    <Exec Command="del /F /Q $(PublishDir)*.xml" />
+    
+    <Exec Command="del /F /Q $(PublishDir)\LICENSE.xml" IgnoreExitCode="true" />
+    <Exec Command="del /F /Q $(PublishDir)\Tools\Binaries\wit" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
+    <Exec Command="move $(PublishDir)LICENSES.txt $(PublishDir)\LICENSE.txt" IgnoreExitCode="true" />
+  </Target>
+
+</Project>
