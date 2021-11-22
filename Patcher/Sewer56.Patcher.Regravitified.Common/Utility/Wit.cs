@@ -16,7 +16,7 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         /// <summary>
         /// Builds an ISO to a given directory.
         /// </summary>
-        public static Task<CommandResult> Build(BuildOptions options)
+        public static Task<CommandResult> Build(BuildOptions options, Stream standardOutputAndError = null)
         {
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
@@ -32,16 +32,19 @@ namespace Sewer56.Patcher.Riders.Common.Utility
 
             var result = Cli.Wrap(WitPath)
                 .WithArguments(argumentBuilder.Build())
-                .WithWorkingDirectory(WitFolder)
-                .ExecuteAsync().Task;
+                .WithWorkingDirectory(WitFolder);
+
+            if (standardOutputAndError != null)
+                result = result.WithStandardOutputPipe(PipeTarget.ToStream(standardOutputAndError))
+                               .WithStandardErrorPipe(PipeTarget.ToStream(standardOutputAndError));
             
-            return result;
+            return result.ExecuteAsync().Task;
         }
 
         /// <summary>
         /// Extracts an ISO to a given directory.
         /// </summary>
-        public static Task<CommandResult> Extract(ExtractOptions options)
+        public static Task<CommandResult> Extract(ExtractOptions options, Stream standardOutputAndError = null)
         {
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
@@ -58,15 +61,18 @@ namespace Sewer56.Patcher.Riders.Common.Utility
 
             var result = Cli.Wrap(WitPath)
                 .WithArguments(argumentBuilder.Build())
-                .WithWorkingDirectory(WitFolder)
-                .ExecuteAsync().Task.ContinueWith(task =>
-                {
-                    var dataPath = Path.GetFullPath(Path.Combine(options.Target, DataFolder));
-                    DeleteNonDataPartitions(options, dataPath);
-                    return task.Result;
-                });
+                .WithWorkingDirectory(WitFolder);
 
-            return result;
+            if (standardOutputAndError != null)
+                result = result.WithStandardOutputPipe(PipeTarget.ToStream(standardOutputAndError))
+                               .WithStandardErrorPipe(PipeTarget.ToStream(standardOutputAndError));
+
+            return result.ExecuteAsync().Task.ContinueWith(task =>
+            {
+                var dataPath = Path.GetFullPath(Path.Combine(options.Target, DataFolder));
+                DeleteNonDataPartitions(options, dataPath);
+                return task.Result;
+            });
         }
 
         private static void DeleteNonDataPartitions(ExtractOptions options, string dataPath)

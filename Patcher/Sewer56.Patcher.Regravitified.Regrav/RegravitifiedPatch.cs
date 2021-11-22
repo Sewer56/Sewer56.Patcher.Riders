@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using Sewer56.DeltaPatchGenerator.Lib;
 using Sewer56.DeltaPatchGenerator.Lib.Model;
@@ -74,12 +75,20 @@ namespace Sewer56.Patcher.Riders.Regrav
 
             // Repack ROM
             reporter.Report("Rebuilding WBFS");
-            await Wit.Build(new Wit.BuildOptions()
+            await using var logStream = new MemoryStream();
+            try
             {
-                Source = tempFolder,
-                Target = outputPath
-            });
-            
+                await Wit.Build(new Wit.BuildOptions()
+                {
+                    Source = tempFolder,
+                    Target = outputPath
+                }, logStream);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n" + $"Log: {Encoding.Default.GetString(logStream.ToArray())}", e);
+            }
+
             Directory.Delete(tempFolder, true);
             reporter.Report("Done");
         }

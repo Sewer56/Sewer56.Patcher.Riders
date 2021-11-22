@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
 
@@ -45,12 +46,21 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         public static async Task ExtractISOAndReport(this ProgressReporter reporter, string isoPath, string isoOutputPath)
         {
             reporter.Report("Extracting ISO");
-            await Wit.Extract(new Wit.ExtractOptions()
+            await using var memoryStream = new MemoryStream();
+
+            try
             {
-                Source = isoPath,
-                DataPartitionOnly = true,
-                Target = isoOutputPath
-            });
+                await Wit.Extract(new Wit.ExtractOptions()
+                {
+                    Source = isoPath,
+                    DataPartitionOnly = true,
+                    Target = isoOutputPath
+                }, memoryStream);
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message + "\n" + $"Log: {memoryStream.ToArray()}", e);
+            }
         }
 
         public static async Task ConvertNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputPath)
