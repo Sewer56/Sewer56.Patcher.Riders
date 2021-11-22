@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31624.102
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders", "Sewer56.Patcher.Regravitified\Sewer56.Patcher.Riders.csproj", "{9CE477DA-4540-4110-AFF5-455B658ECD6A}"
 EndProject
@@ -16,8 +16,6 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.DeltaPatchGenerator.Lib", "Submodules\Sewer56.DeltaPatchGenerator\Sewer56.DeltaPatchGenerator.Lib\Sewer56.DeltaPatchGenerator.Lib.csproj", "{E25CC718-B90E-4D23-8C25-C0174860D7E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Dx", "Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj", "{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VCDiff", "Submodules\Sewer56.DeltaPatchGenerator\Submodules\vcdiff\src\VCDiff\VCDiff.csproj", "{679B4698-DD66-46A7-AE39-285A87195565}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -49,17 +47,12 @@ Global
 		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}.Release|Any CPU.Build.0 = Release|Any CPU
-		{679B4698-DD66-46A7-AE39-285A87195565}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{679B4698-DD66-46A7-AE39-285A87195565}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{679B4698-DD66-46A7-AE39-285A87195565}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{679B4698-DD66-46A7-AE39-285A87195565}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{E25CC718-B90E-4D23-8C25-C0174860D7E4} = {0EC63F93-1766-4789-8E9E-192849A402B8}
-		{679B4698-DD66-46A7-AE39-285A87195565} = {0EC63F93-1766-4789-8E9E-192849A402B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6898F0CD-6F51-46F3-ACFD-DD527FCB83D9}
