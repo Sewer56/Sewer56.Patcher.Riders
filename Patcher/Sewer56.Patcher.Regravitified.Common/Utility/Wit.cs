@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Text;
 using System.Threading.Tasks;
 using CliWrap;
 using CliWrap.Builders;
@@ -44,7 +45,7 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         /// <summary>
         /// Extracts an ISO to a given directory.
         /// </summary>
-        public static Task<CommandResult> Extract(ExtractOptions options, Stream standardOutputAndError = null)
+        public static Task<CommandResult> Extract(ExtractOptions options, StringBuilder standardOutput = null, StringBuilder standardError = null)
         {
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
@@ -63,9 +64,11 @@ namespace Sewer56.Patcher.Riders.Common.Utility
                 .WithArguments(argumentBuilder.Build())
                 .WithWorkingDirectory(WitFolder);
 
-            if (standardOutputAndError != null)
-                result = result.WithStandardOutputPipe(PipeTarget.ToStream(standardOutputAndError))
-                               .WithStandardErrorPipe(PipeTarget.ToStream(standardOutputAndError));
+            if (standardOutput != null)
+                result = result.WithStandardOutputPipe(PipeTarget.ToStringBuilder(standardOutput));
+
+            if (standardError != null)
+                result = result.WithStandardErrorPipe(PipeTarget.ToStringBuilder(standardError));
 
             return result.ExecuteAsync().Task.ContinueWith(task =>
             {
