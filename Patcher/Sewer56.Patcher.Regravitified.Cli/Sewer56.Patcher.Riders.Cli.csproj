@@ -25,4 +25,10 @@
     </None>
   </ItemGroup>
 
+  <!-- Clean up on Publishing Files -->
+  <Target Name="CleanupOnPublishCli" AfterTargets="Publish">
+    <Message Importance="high" Text="Publish Directory Cli = &quot;$(PublishDir)&quot;" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Theme&quot;" IgnoreExitCode="true" />
+  </Target>
+
 </Project>
