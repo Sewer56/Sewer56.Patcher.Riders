@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using CliWrap;
 using CliWrap.Builders;
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
@@ -14,29 +13,27 @@ namespace Sewer56.Patcher.Riders.Common.Utility
     {
         public static string WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
         public static string WitPath   = Path.Combine(WitFolder, "wit.exe");
-        private static Platform _platform;
 
         public const string DataFolder = "DATA";
 
         /// <summary>
         /// Initializes Wit for a specific target platform.
         /// </summary>
-        public static void Init(Platform platform)
+        static Wit()
         {
-            _platform = platform;
-            switch (platform)
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
-                case Platform.Windows:
-                    WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
-                    WitPath = Path.Combine(WitFolder, "wit.exe");
-                    break;
-                case Platform.Linux:
-                    WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit-linux");
-                    WitPath   = Path.Combine(WitFolder, "wit");
-                    WitPath   = TranslatePath(WitPath);
-                    break;
-                case Platform.OSX:
-                    throw new ArgumentOutOfRangeException(nameof(platform), platform, "OSX Is Not Supported because I can't Test it. Contact me if you are running OSX.");
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
+                WitPath = Path.Combine(WitFolder, "wit.exe");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit-linux");
+                WitPath = Path.Combine(WitFolder, "wit");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                throw new Exception("Wit: OSX Is Not Supported because I can't Test it. Contact me if you are running OSX.");
             }
         }
 
@@ -48,25 +45,18 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
             ThrowHelpers.ThrowIfNullOrEmpty(options.Target, nameof(options.Target));
-
-            // Translate for Wine
-            var executablePath  = WitPath;
-            var argumentBuilder = new ArgumentsBuilder();
-
-            if (_platform != Platform.Windows)
-            {
-                options.Source = TranslatePath(options.Source);
-                options.Target = TranslatePath(options.Target);
-            }
+            options.Source = Path.GetFullPath(options.Source);
+            options.Target = Path.GetFullPath(options.Target);
 
             // Create arguments.
+            var argumentBuilder = new ArgumentsBuilder();
             argumentBuilder.Add("COPY");
             argumentBuilder.Add($"{options.Source}");
             argumentBuilder.Add($"{options.Target}");
             argumentBuilder.Add("-f");
             argumentBuilder.Add("-o");
 
-            var result = Cli.Wrap(executablePath)
+            var result = Cli.Wrap(WitPath)
                 .WithArguments(argumentBuilder.Build())
                 .WithWorkingDirectory(WitFolder);
 
@@ -85,25 +75,18 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
             ThrowHelpers.ThrowIfNullOrEmpty(options.Target, nameof(options.Target));
-
-            // Translate for Wine
-            var executablePath  = WitPath;
-            var argumentBuilder = new ArgumentsBuilder();
-
-            if (_platform != Platform.Windows)
-            {
-                options.Source = TranslatePath(options.Source);
-                options.Target = TranslatePath(options.Target);
-            }
+            options.Source = Path.GetFullPath(options.Source);
+            options.Target = Path.GetFullPath(options.Target);
 
             // Create arguments.
+            var argumentBuilder = new ArgumentsBuilder();
             argumentBuilder.Add("EXTRACT");
             argumentBuilder.Add($"{options.Source}");
             argumentBuilder.Add($"{options.Target}");
             argumentBuilder.Add("-f");
             argumentBuilder.Add("-o");
 
-            var result = Cli.Wrap(executablePath)
+            var result = Cli.Wrap(WitPath)
                 .WithArguments(argumentBuilder.Build())
                 .WithWorkingDirectory(WitFolder);
 
@@ -149,23 +132,5 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             public string Source;
             public string Target;
         }
-
-        private static string TranslatePath(string existingPath)
-        {
-            var stringBuilder = new StringBuilder();
-            var result = Cli.Wrap("winepath")
-                .WithArguments($"-u \"{existingPath}\"")
-                .WithStandardOutputPipe(PipeTarget.ToStringBuilder(stringBuilder))
-                .ExecuteAsync().Task.Result;
-
-            return stringBuilder.ToString().Replace("\n", "");
-        }
-    }
-
-    public enum Platform
-    {
-        Windows,
-        Linux,
-        OSX
     }
 }

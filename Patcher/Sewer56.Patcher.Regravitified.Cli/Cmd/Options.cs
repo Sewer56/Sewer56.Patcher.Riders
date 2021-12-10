@@ -1,7 +1,6 @@
 ﻿using CommandLine;
-using Sewer56.Patcher.Riders.Common.Utility;
 
-namespace Sewer56.Patcher.Riders.Cmd
+namespace Sewer56.Patcher.Riders.Cli.Cmd
 {
     public class Options
     {
@@ -88,12 +87,11 @@ namespace Sewer56.Patcher.Riders.Cmd
             public string Patches { get; internal set; }
         }
 
-
-        [Verb("Launch", HelpText = "Launches the GUI with a specific target platform.")]
-        internal class LaunchGUI
+        [Verb("PatchGame", HelpText = "Patches the game this release of the patcher has been preconfigured with.")]
+        internal class PatchGameOptions
         {
-            [Option("platform", Required = true, HelpText = "The platform to launch the launcher for.", Default = Platform.Windows)]
-            public Platform Platform { get; internal set; }
+            [Option("rom", Required = true, HelpText = "Path to the ROM to be patched.")]
+            public string RomPath { get; internal set; }
         }
     }
 }

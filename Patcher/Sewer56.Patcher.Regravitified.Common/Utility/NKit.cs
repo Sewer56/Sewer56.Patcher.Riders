@@ -1,18 +1,13 @@
-﻿using System;
+﻿using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
-using CliWrap;
-using CliWrap.Builders;
+using Nanook.NKit;
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
 
 namespace Sewer56.Patcher.Riders.Common.Utility
 {
     public class NKit
     {
-        public static readonly string NKitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/nkit");
-        public static readonly string NKitPath   = Path.Combine(NKitFolder, "ConvertToISO.exe");
-        public static readonly string NKitResultPath = Path.Combine(NKitFolder, "Processed/output.iso");
-
         /// <summary>
         /// Returns true if an image file is NKit, else false.
         /// </summary>
@@ -28,39 +23,30 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         /// <summary>
         /// Runs a compress command that converts an NKit to an ISO.
         /// </summary>
-        public static Task<CommandResult> Convert(ConvertOptions options)
+        public static Task Convert(ConvertOptions options)
         {
-            // Validate Parameters
+            // Validate Parameters.
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
             ThrowHelpers.ThrowIfNullOrEmpty(options.Target, nameof(options.Target));
 
-            // Create arguments.
-            var argumentBuilder = new ArgumentsBuilder();
-            argumentBuilder.Add(options.Source);
+            // Open Source File.
+            var sourceFiles = SourceFiles.Scan(new []{ options.Source }, false); // For some strange reason NKit borks on using SourceFiles.OpenFile directly, even if value is same.
+            var nkitConvert = new Converter(sourceFiles[0], true);
+            if (options.Progress != null)
+                nkitConvert.LogProgress += (sender, args) => options.Progress("Converting from NKit", args.TotalProgress);
 
-            var result = Cli.Wrap(NKitPath)
-                .WithValidation(CommandResultValidation.None)
-                .WithArguments(argumentBuilder.Build())
-                .WithWorkingDirectory(NKitFolder)
-                .WithStandardOutputPipe(PipeTarget.ToStream(Console.OpenStandardOutput()))
-                .ExecuteAsync().Task.ContinueWith(task =>
-            {
-                // Move ISO
-                var path = Path.Combine(NKitFolder, NKitResultPath);
-                if (!File.Exists(path))
-                    throw new FileNotFoundException("ISO File Output by NKit Not Found");
-
-                File.Move(path, options.Target);
-                return task.Result;
-            });
-
-            return result;
+            return Task.Run(() => nkitConvert.ConvertToIso(false, false, false, false)).ContinueWith(
+                task =>
+                {
+                    File.Move(task.Result.OutputFileName, options.Target, true);
+                });
         }
 
         public class ConvertOptions
         {
             public string Source;
             public string Target;
+            public Events.ProgressCallback Progress;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using Sewer56.Patcher.Riders.Cmd;
+using Sewer56.Patcher.Riders.Cli;
 using Sewer56.Patcher.Riders.Common.Utility;
 
 namespace Sewer56.Patcher.Riders
@@ -14,13 +14,12 @@ namespace Sewer56.Patcher.Riders
             if (args.Length > 0)
                 new Commandline(args);
             else
-                LaunchGui(Platform.Windows);
+                LaunchGui();
         }
 
-        public static void LaunchGui(Platform platform)
+        public static void LaunchGui()
         {
             FreeConsole();
-            Wit.Init(platform);
             var app = new App();
             app.InitializeComponent();
             app.Run(new MainWindow());
