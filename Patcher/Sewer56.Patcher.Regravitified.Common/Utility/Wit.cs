@@ -33,7 +33,8 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             }
             else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                throw new Exception("Wit: OSX Is Not Supported because I can't Test it. Contact me if you are running OSX.");
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit-osx");
+                WitPath = Path.Combine(WitFolder, "wit");
             }
         }
 
