@@ -31,7 +31,7 @@ namespace Sewer56.Patcher.Riders
             });
 
             var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions,
-                ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO>(args);
+                ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO, LaunchGUI>(args);
 
             var tasks = new List<Task>
             {
@@ -42,11 +42,18 @@ namespace Sewer56.Patcher.Riders
                 parserResult.WithParsedAsync<ExtractISO>(ExtractISO),
                 parserResult.WithParsedAsync<ApplyPatchOptions>(ApplyPatch),
                 parserResult.WithParsedAsync<ApplyPatchesOptions>(ApplyPatches),
-                parserResult.WithParsedAsync<BuildISO>(BuildISO)
+                parserResult.WithParsedAsync<BuildISO>(BuildISO),
+                parserResult.WithParsedAsync<LaunchGUI>(LaunchGUI)
             };
 
             parserResult.WithNotParsed(errs => HandleParseError(parserResult, errs));
             Task.WaitAll(tasks.ToArray());
+        }
+
+        private Task LaunchGUI(LaunchGUI arg)
+        {
+            Program.LaunchGui(arg.Platform);
+            return Task.CompletedTask;
         }
 
         private Task ApplyPatches(ApplyPatchesOptions obj)

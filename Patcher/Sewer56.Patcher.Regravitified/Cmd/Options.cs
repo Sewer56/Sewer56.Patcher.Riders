@@ -1,4 +1,5 @@
 ﻿using CommandLine;
+using Sewer56.Patcher.Riders.Common.Utility;
 
 namespace Sewer56.Patcher.Riders.Cmd
 {
@@ -85,6 +86,14 @@ namespace Sewer56.Patcher.Riders.Cmd
 
             [Option("patches", Required = true, HelpText = "The folder containing folders which contain patch data.")]
             public string Patches { get; internal set; }
+        }
+
+
+        [Verb("Launch", HelpText = "Launches the GUI with a specific target platform.")]
+        internal class LaunchGUI
+        {
+            [Option("platform", Required = true, HelpText = "The platform to launch the launcher for.", Default = Platform.Windows)]
+            public Platform Platform { get; internal set; }
         }
     }
 }
