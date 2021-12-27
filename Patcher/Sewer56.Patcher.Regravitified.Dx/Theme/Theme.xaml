@@ -3,7 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Reloaded.WPF.Controls;assembly=Reloaded.WPF">
 
-    <sys:String x:Key="PatcherTitle">DX Patcher</sys:String>
+    <sys:String x:Key="PatcherTitle">Tournament Edition Patcher</sys:String>
 
     <!-- 
         This is an example of a more advanced theme. 

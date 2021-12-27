@@ -37,8 +37,8 @@ public static class PatchApplier
             var outputPath = Path.Combine(Path.GetDirectoryName(sourceFilePath), Patch.FileName);
             await Patch.ApplyPatch(sourceFilePath, outputPath, reportProgressCallback);
 
-            showDialog("Patch Success", $"New ROM Saved to: {outputPath}\n" +
-                                        $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec");
+            //showDialog("Patch Success", $"New ROM Saved to: {outputPath}\n" +
+            //                            $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec");
         }
         catch (AggregateException ex)
         {

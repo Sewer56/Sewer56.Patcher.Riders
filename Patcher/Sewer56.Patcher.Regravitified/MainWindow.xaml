@@ -29,7 +29,8 @@
             <!-- Text -->
             <TextBlock Style="{DynamicResource TextblockWithColourChange}" Text="{Binding Path=CurrentPatchingStep}" 
                        HorizontalAlignment="Center" FontSize="32" FontFamily="{DynamicResource FontLight}"
-                       Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
+                       Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}" 
+                       TextWrapping="Wrap"/>
 
             <!-- Patch -->
             <Button x:Name="Button" Margin="{DynamicResource CommonItemVerticalMargin}" 

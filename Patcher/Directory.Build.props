@@ -12,7 +12,7 @@
           SRDX
           REGRAV
     -->
-    <DefineConstants>REGRAV</DefineConstants>
+    <DefineConstants>SRDX</DefineConstants>
     <PublishDir>../Publish</PublishDir>
 
     <!-- Common Publish Options -->

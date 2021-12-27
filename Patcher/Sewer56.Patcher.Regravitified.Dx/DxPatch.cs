@@ -11,14 +11,14 @@ namespace Sewer56.Patcher.Riders.Dx
 {
     public class DxPatch : IGamePatch
     {
-        public const string ExpectedRomName = "Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso";
+        public const string ExpectedRomName = "SRTE 1.4.iso";
 
-        public string FileName { get; set; } = "Sonic Riders DX.iso";
+        public string FileName { get; set; } = "SRTE 1.4.1.iso";
 
         public bool GetInstructionDialog(out string title, out string text)
         {
             title = "The one and only step.";
-            text = "Please select a GameCube ROM of Sonic Riders to patch.\n" +
+            text = "Please select a GameCube ROM of Sonic Riders TE 1.4 to patch.\n" +
                    "Once started, the patching process will take a minute or two.";
 
             return true;
@@ -55,7 +55,7 @@ namespace Sewer56.Patcher.Riders.Dx
             }
 
             // Apply Patch
-            reporter.Report("Patching NTSC-U -> Riders DX");
+            reporter.Report("Patching Tournament Edition");
             var appliedPatchPath = Path.Combine(tempFolder, ExpectedRomName);
             Patch.Apply(PatchData.FromDirectories(Assets.ToDxPatchesFolder).ToArray().AsSpan(), sourceFolder, tempFolder);
 

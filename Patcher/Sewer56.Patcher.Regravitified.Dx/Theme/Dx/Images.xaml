@@ -4,5 +4,7 @@
 
     <!-- Modified copy of Theme/Halogen/Images.xaml -->
     <ImageSource x:Key="IconGame">pack://siteoforigin:,,,/Theme/Dx/Images/SRDX_VER1.png</ImageSource>
+    <ImageSource x:Key="Cultagonist">pack://siteoforigin:,,,/Theme/Dx/Images/Cultagonist.png</ImageSource>
+    <ImageSource x:Key="Social_20">pack://siteoforigin:,,,/Theme/Dx/Images/Social_20.png</ImageSource>
 
 </ResourceDictionary>

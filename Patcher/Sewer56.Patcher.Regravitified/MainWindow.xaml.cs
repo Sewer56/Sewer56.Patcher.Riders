@@ -15,6 +15,14 @@ namespace Sewer56.Patcher.Riders
         public MainWindow()
         {
             InitializeComponent();
+
+            Application.Current.Dispatcher.Invoke(() =>
+            {
+                var successWindow = new Dialogs.MessageBox("Disclaimer", "Everything seen beyond this point is a PARODY.\n" +
+                                                                         "This was created for entertainment purposes only.");
+                successWindow.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+                successWindow.ShowDialog();
+            });
         }
 
         private async void Button_OnClick(object sender, RoutedEventArgs e) => await Task.Run(() => ViewModel.Patch());
