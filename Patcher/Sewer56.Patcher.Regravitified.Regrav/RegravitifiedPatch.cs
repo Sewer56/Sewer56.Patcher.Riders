@@ -85,6 +85,10 @@ namespace Sewer56.Patcher.Riders.Regrav
                     Target = outputPath
                 }, logStream);
             }
+            catch (AggregateException e)
+            {
+                throw new Exception(e.Flatten().Message + "\n" + $"Log: {Encoding.Default.GetString(logStream.ToArray())}", e);
+            }
             catch (Exception e)
             {
                 throw new Exception(e.Message + "\n" + $"Log: {Encoding.Default.GetString(logStream.ToArray())}", e);

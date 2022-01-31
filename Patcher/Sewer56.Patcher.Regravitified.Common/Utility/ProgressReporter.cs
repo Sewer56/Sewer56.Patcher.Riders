@@ -59,6 +59,10 @@ namespace Sewer56.Patcher.Riders.Common.Utility
                     Target = isoOutputPath
                 }, stdOut, stdErr);
             }
+            catch (AggregateException e)
+            {
+                throw new Exception(e.Flatten().Message + "\n" + $"StdOut: {stdOut}" + "\n" + $"StdErr: {stdErr}", e);
+            }
             catch (Exception e)
             {
                 throw new Exception(e.Message + "\n" + $"StdOut: {stdOut}" + "\n" + $"StdErr: {stdErr}", e);
@@ -74,7 +78,6 @@ namespace Sewer56.Patcher.Riders.Common.Utility
                 Target = isoOutputPath
             });
         }
-
         public static async Task ExtractNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputFolder, bool deleteIso = true)
         {
             var convertedPath = Path.Combine(isoOutputFolder, "nkit.iso");
