@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using Ookii.Dialogs.Wpf;
 using Reloaded.WPF.MVVM;
+using Sewer56.Patcher.Riders.Cli;
 #if SRDX
 using Sewer56.Patcher.Riders.Dx;
 #elif REGRAV
@@ -37,13 +38,7 @@ namespace Sewer56.Patcher.Riders.ViewModel
             IsPatching = true;
             try
             {
-#if SRDX
-                var gamePatch = new DxPatch();
-#elif REGRAV
-                var gamePatch = new RegravitifiedPatch();
-#endif
-
-                if (gamePatch.GetInstructionDialog(out var title, out var text))
+                if (PatchApplier.Patch.GetInstructionDialog(out var title, out var text))
                     ShowDialog(title, text);
 
                 // Select ROM
@@ -51,31 +46,11 @@ namespace Sewer56.Patcher.Riders.ViewModel
                     return;
 
                 // Select Output
-                var timer = Stopwatch.StartNew();
-                var outputPath = Path.Combine(Path.GetDirectoryName(fileName), gamePatch.FileName);
-                await gamePatch.ApplyPatch(fileName, outputPath, (text, progress) =>
+                await PatchApplier.PatchGame(fileName, ShowDialog, (text, progress) =>
                 {
                     Progress = progress * 100;
                     CurrentPatchingStep = text;
                 });
-
-                ShowDialog("Patch Success", $"New ROM Saved to: {outputPath}\n" +
-                                            $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec");
-            }
-            catch (AggregateException ex)
-            {
-                var text = new StringBuilder();
-                for (var x = 0; x < ex.InnerExceptions.Count; x++)
-                {
-                    var exception = ex.InnerExceptions[x];
-                    text.AppendLine($"{x}. {exception.Message}\n{exception.StackTrace}");
-                }
-
-                ShowDialog("Failed to Convert ROM (Unexpected Error)", text.ToString());
-            }
-            catch (Exception error)
-            {
-                ShowDialog("Failed to Convert ROM", error.Message);
             }
             finally
             {

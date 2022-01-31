@@ -1,17 +1,18 @@
-﻿using CommandLine;
-using CommandLine.Text;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using static Sewer56.Patcher.Riders.Cmd.Options;
+using System.IO;
 using System.Threading.Tasks;
+using CommandLine;
+using CommandLine.Text;
 using Sewer56.DeltaPatchGenerator.Lib;
 using Sewer56.DeltaPatchGenerator.Lib.Model;
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
-using Sewer56.Patcher.Riders.Cmd;
+using Sewer56.Patcher.Riders.Cli.Cmd;
 using Sewer56.Patcher.Riders.Common.Utility;
+using static Sewer56.Patcher.Riders.Cli.Cmd.Options;
 
-namespace Sewer56.Patcher.Riders
+namespace Sewer56.Patcher.Riders.Cli
 {
     /// <summary>
     /// Stores the commandline 
@@ -31,7 +32,7 @@ namespace Sewer56.Patcher.Riders
             });
 
             var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions,
-                ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO>(args);
+                ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO, PatchGameOptions>(args);
 
             var tasks = new List<Task>
             {
@@ -42,11 +43,28 @@ namespace Sewer56.Patcher.Riders
                 parserResult.WithParsedAsync<ExtractISO>(ExtractISO),
                 parserResult.WithParsedAsync<ApplyPatchOptions>(ApplyPatch),
                 parserResult.WithParsedAsync<ApplyPatchesOptions>(ApplyPatches),
-                parserResult.WithParsedAsync<BuildISO>(BuildISO)
+                parserResult.WithParsedAsync<BuildISO>(BuildISO),
+                parserResult.WithParsedAsync<PatchGameOptions>(PatchGame)
             };
 
             parserResult.WithNotParsed(errs => HandleParseError(parserResult, errs));
             Task.WaitAll(tasks.ToArray());
+        }
+
+        private async Task PatchGame(PatchGameOptions options)
+        {
+            if (!File.Exists(options.RomPath))
+                throw new Exception("Path to the ROM to be patched does not exist.");
+
+            using var progressBar = new ProgressBar();
+            void ShowDialog(string title, string message)
+            {
+                Console.WriteLine(title);
+                Console.WriteLine("=====");
+                Console.WriteLine(message);
+            }
+
+            await PatchApplier.PatchGame(options.RomPath, ShowDialog, (text, progress) => progressBar.Report(progress, text));
         }
 
         private Task ApplyPatches(ApplyPatchesOptions obj)
@@ -88,10 +106,12 @@ namespace Sewer56.Patcher.Riders
 
         private async Task ConvertNKit(ConvertNKitOptions obj)
         {
+            using var progressBar = new ProgressBar();
             await NKit.Convert(new NKit.ConvertOptions()
             {
                 Source = obj.Source,
-                Target = obj.Target
+                Target = obj.Target,
+                Progress = (text, progress) => progressBar.Report(progress, text)
             });
         }
 

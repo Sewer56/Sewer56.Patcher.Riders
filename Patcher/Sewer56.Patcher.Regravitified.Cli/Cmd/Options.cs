@@ -1,6 +1,6 @@
 ﻿using CommandLine;
 
-namespace Sewer56.Patcher.Riders.Cmd
+namespace Sewer56.Patcher.Riders.Cli.Cmd
 {
     public class Options
     {
@@ -85,6 +85,13 @@ namespace Sewer56.Patcher.Riders.Cmd
 
             [Option("patches", Required = true, HelpText = "The folder containing folders which contain patch data.")]
             public string Patches { get; internal set; }
+        }
+
+        [Verb("PatchGame", HelpText = "Patches the game this release of the patcher has been preconfigured with.")]
+        internal class PatchGameOptions
+        {
+            [Option("rom", Required = true, HelpText = "Path to the ROM to be patched.")]
+            public string RomPath { get; internal set; }
         }
     }
 }

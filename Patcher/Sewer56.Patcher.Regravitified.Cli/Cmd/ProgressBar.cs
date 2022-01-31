@@ -6,7 +6,7 @@ using System.Threading;
  * Adapted from https://gist.github.com/DanielSWolf/0ab6a96899cc5377bf54
  * With further improvements.
  */
-namespace Sewer56.Patcher.Riders.Cmd
+namespace Sewer56.Patcher.Riders.Cli.Cmd
 {
     public class ProgressBar : IDisposable
     {

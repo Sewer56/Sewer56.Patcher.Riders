@@ -1,0 +1,44 @@
+<Project>
+  <PropertyGroup>
+    <!-- Latest Language Version -->
+    <LangVersion>preview</LangVersion>
+
+    <!-- Game Toggle -->
+
+    <!-- 
+          Please see CleanupOnPublish for code for removing files.
+
+          Valid values:
+          SRDX
+          REGRAV
+    -->
+    <DefineConstants>REGRAV</DefineConstants>
+    <PublishDir>../Publish</PublishDir>
+
+    <!-- Common Publish Options -->
+    <SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+
+    <!-- Smaller App on Publish -->
+    <DebuggerSupport>false</DebuggerSupport>
+    <EnableUnsafeUTF7Encoding>false</EnableUnsafeUTF7Encoding>
+    <EnableUnsafeBinaryFormatterSerialization>false</EnableUnsafeBinaryFormatterSerialization>
+    <EventSourceSupport>false</EventSourceSupport>
+    <InvariantGlobalization>false</InvariantGlobalization>
+    <UseSystemResourceKeys>true</UseSystemResourceKeys>
+    <HttpActivityPropagationSupport>false</HttpActivityPropagationSupport>
+
+  </PropertyGroup>
+
+
+  <!-- Clean up on Publishing Files -->
+  <Target Name="CleanupOnPublish" AfterTargets="Publish">
+    <Message Importance="high" Text="Publish directory = &quot;$(PublishDir)&quot;" />
+    <Exec Command="del /F /Q &quot;$(PublishDir)*.pdb&quot;" IgnoreExitCode="true" />
+    <Exec Command="del /F /Q &quot;$(PublishDir)*.xml&quot;" IgnoreExitCode="true" />
+
+    <Exec Command="del /F /Q &quot;$(PublishDir)\LICENSE.xml&quot;" IgnoreExitCode="true" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
+    <Exec Command="move &quot;$(PublishDir)LICENSES.txt&quot; &quot;$(PublishDir)\LICENSE.txt&quot;" IgnoreExitCode="true" />
+  </Target>
+
+</Project>

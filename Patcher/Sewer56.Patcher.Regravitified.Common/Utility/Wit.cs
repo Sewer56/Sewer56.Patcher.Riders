@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using CliWrap;
@@ -10,9 +11,32 @@ namespace Sewer56.Patcher.Riders.Common.Utility
 {
     public static class Wit
     {
-        public static readonly string WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
-        public static readonly string WitPath = Path.Combine(WitFolder, "wit.exe");
+        public static string WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
+        public static string WitPath   = Path.Combine(WitFolder, "wit.exe");
+
         public const string DataFolder = "DATA";
+
+        /// <summary>
+        /// Initializes Wit for a specific target platform.
+        /// </summary>
+        static Wit()
+        {
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            {
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit");
+                WitPath = Path.Combine(WitFolder, "wit.exe");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit-linux");
+                WitPath = Path.Combine(WitFolder, "wit");
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                WitFolder = Path.Combine(Paths.ProgramFolder, "Tools/Binaries/wit-osx");
+                WitPath = Path.Combine(WitFolder, "wit");
+            }
+        }
 
         /// <summary>
         /// Builds an ISO to a given directory.
@@ -22,12 +46,14 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
             ThrowHelpers.ThrowIfNullOrEmpty(options.Target, nameof(options.Target));
+            options.Source = Path.GetFullPath(options.Source);
+            options.Target = Path.GetFullPath(options.Target);
 
             // Create arguments.
             var argumentBuilder = new ArgumentsBuilder();
             argumentBuilder.Add("COPY");
-            argumentBuilder.Add(options.Source);
-            argumentBuilder.Add(options.Target);
+            argumentBuilder.Add($"{options.Source}");
+            argumentBuilder.Add($"{options.Target}");
             argumentBuilder.Add("-f");
             argumentBuilder.Add("-o");
 
@@ -50,13 +76,14 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             // Validate Parameters
             ThrowHelpers.ThrowIfNullOrEmpty(options.Source, nameof(options.Source));
             ThrowHelpers.ThrowIfNullOrEmpty(options.Target, nameof(options.Target));
+            options.Source = Path.GetFullPath(options.Source);
+            options.Target = Path.GetFullPath(options.Target);
 
             // Create arguments.
             var argumentBuilder = new ArgumentsBuilder();
-            argumentBuilder.Add("EXTRACT"); 
-            argumentBuilder.Add(options.Source);
-            argumentBuilder.Add("-d");
-            argumentBuilder.Add(options.Target);
+            argumentBuilder.Add("EXTRACT");
+            argumentBuilder.Add($"{options.Source}");
+            argumentBuilder.Add($"{options.Target}");
             argumentBuilder.Add("-f");
             argumentBuilder.Add("-o");
 

@@ -1,28 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <PlatformTarget>x64</PlatformTarget>
-    <LangVersion>preview</LangVersion>
     <StartupObject>Sewer56.Patcher.Riders.Program</StartupObject>
 
     <!-- Needed for functional console -->
-    <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
-
-    <!-- 
-          Please see CleanupOnPublish for code for removing files.
-
-          Valid values:
-          SRDX
-          REGRAV
-    -->
-    <DefineConstants>REGRAV</DefineConstants>
-
     <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
     <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX))">..\Sewer56.Patcher.Regravitified.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
 
+    <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CommandLineParser" Version="2.8.0" />
+    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="4.0.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
@@ -42,26 +34,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj" />
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj" Condition="$(DefineConstants.Contains(SRDX))" />
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="LICENSE.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-
+    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Cli\Sewer56.Patcher.Riders.Cli.csproj" />
   </ItemGroup>
   
-  <Target Name="CleanupOnPublish" AfterTargets="Publish">
-    <Message Importance="high" Text="Publish directory = $(PublishDir)" />
-    <Exec Command="del /F /Q $(PublishDir)*.pdb" />
-    <Exec Command="del /F /Q $(PublishDir)*.xml" />
-    
-    <Exec Command="del /F /Q $(PublishDir)\LICENSE.xml" IgnoreExitCode="true" />
-    <Exec Command="del /F /Q $(PublishDir)\Tools\Binaries\wit" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
-    <Exec Command="move $(PublishDir)LICENSES.txt $(PublishDir)\LICENSE.txt" IgnoreExitCode="true" />
-  </Target>
 
 </Project>
