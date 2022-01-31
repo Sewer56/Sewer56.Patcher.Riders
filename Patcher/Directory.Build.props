@@ -12,7 +12,7 @@
           SRDX
           REGRAV
     -->
-    <DefineConstants>REGRAV</DefineConstants>
+    <DefineConstants>SRDX</DefineConstants>
     <PublishDir>../Publish</PublishDir>
 
     <!-- Common Publish Options -->
@@ -39,6 +39,8 @@
     <Exec Command="del /F /Q &quot;$(PublishDir)\Sewer56.Patcher.Riders.Cli.exe&quot;" IgnoreExitCode="true" />
     <Exec Command="del /F /Q &quot;$(PublishDir)\LICENSE.xml&quot;" IgnoreExitCode="true" />
     <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit-linux&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit-osx&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
     <Exec Command="move &quot;$(PublishDir)LICENSES.txt&quot; &quot;$(PublishDir)\LICENSE.txt&quot;" IgnoreExitCode="true" />
   </Target>
 
