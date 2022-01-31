@@ -6,7 +6,7 @@
 
     <!-- Cross Platform -->
     <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
-
+    <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
   </PropertyGroup>
 
   <ItemGroup>

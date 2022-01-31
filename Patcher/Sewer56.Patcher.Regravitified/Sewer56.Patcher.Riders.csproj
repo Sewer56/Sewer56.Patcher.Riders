@@ -1,18 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>Exe</OutputType>
+    <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <PlatformTarget>x64</PlatformTarget>
     <StartupObject>Sewer56.Patcher.Riders.Program</StartupObject>
 
     <!-- Needed for functional console -->
-    <DisableWinExeOutputInference>true</DisableWinExeOutputInference>
-
     <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
     <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX))">..\Sewer56.Patcher.Regravitified.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
 
+    <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -22,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.0.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Ookii.Dialogs.Wpf" Version="4.0.0" />
     <PackageReference Include="PropertyChanged.Fody" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
