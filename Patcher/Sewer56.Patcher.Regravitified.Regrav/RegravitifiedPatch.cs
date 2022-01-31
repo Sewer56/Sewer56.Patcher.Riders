@@ -18,7 +18,8 @@ namespace Sewer56.Patcher.Riders.Regrav
         {
             title = "The one and only step.";
             text  = "Please select a Wii ROM of Sonic Riders: Zero Gravity to patch.\n" +
-                    "Once started, the patching process will take up to 5 minutes.";
+                    "Once started, the patching process will take up to 5 minutes.\n" +
+                    "10GB of free space on Primary Drive (usually C) is required.";
 
             return true;
         }

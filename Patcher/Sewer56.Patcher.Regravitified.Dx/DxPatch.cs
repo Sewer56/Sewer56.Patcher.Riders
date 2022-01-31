@@ -18,7 +18,7 @@ namespace Sewer56.Patcher.Riders.Dx
         public bool GetInstructionDialog(out string title, out string text)
         {
             title = "The one and only step.";
-            text = "Please select a GameCube ROM of Sonic Riders to patch.\n" +
+            text = "Please select a North American (NTSC-U) GameCube ROM of Sonic Riders to patch.\n" +
                    "Once started, the patching process will take a minute or two.";
 
             return true;
