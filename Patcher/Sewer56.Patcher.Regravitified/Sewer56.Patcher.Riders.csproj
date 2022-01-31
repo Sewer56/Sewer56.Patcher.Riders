@@ -11,7 +11,6 @@
     <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
     <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX))">..\Sewer56.Patcher.Regravitified.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
 
-    <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -21,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.0.3">
+    <PackageReference Include="DotnetRuntimeBootstrapper" Version="2.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
