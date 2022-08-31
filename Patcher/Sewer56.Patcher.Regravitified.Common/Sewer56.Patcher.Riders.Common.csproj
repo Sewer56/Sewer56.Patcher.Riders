@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -14,11 +14,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="CliWrap" Version="3.3.3" />
+    <PackageReference Include="CliWrap" Version="3.3.3" Condition="$(DefineConstants.Contains(REGRAV))" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Submodules\NKit\NKit\NKit.csproj" />
+    <ProjectReference Include="..\Submodules\NKit\NKit\NKit.csproj" Condition="$(DefineConstants.Contains(SRDXSelfContained)) == false"  />
     <ProjectReference Include="..\Submodules\Sewer56.DeltaPatchGenerator\Sewer56.DeltaPatchGenerator.Lib\Sewer56.DeltaPatchGenerator.Lib.csproj" />
   </ItemGroup>
 

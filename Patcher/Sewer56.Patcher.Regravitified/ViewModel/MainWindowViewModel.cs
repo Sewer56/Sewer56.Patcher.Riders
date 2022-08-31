@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Threading;
 using Ookii.Dialogs.Wpf;
 using Reloaded.WPF.MVVM;
 using Sewer56.Patcher.Riders.Cli;
@@ -48,8 +49,11 @@ namespace Sewer56.Patcher.Riders.ViewModel
                 // Select Output
                 await PatchApplier.PatchGame(fileName, ShowDialog, (text, progress) =>
                 {
-                    Progress = progress * 100;
-                    CurrentPatchingStep = text;
+                    Application.Current.Dispatcher.InvokeAsync(() =>
+                    {
+                        Progress = progress * 100;
+                        CurrentPatchingStep = text;
+                    });
                 });
             }
             finally

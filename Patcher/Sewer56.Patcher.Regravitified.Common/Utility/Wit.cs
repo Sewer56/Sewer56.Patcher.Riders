@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if REGRAV
+using System;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -135,3 +136,4 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         }
     }
 }
+#endif

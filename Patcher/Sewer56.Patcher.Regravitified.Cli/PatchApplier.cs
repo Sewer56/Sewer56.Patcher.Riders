@@ -1,4 +1,4 @@
-﻿#if SRDX
+﻿#if SRDX || SRDXSelfContained
 using Sewer56.Patcher.Riders.Dx;
 #elif REGRAV
 using Sewer56.Patcher.Riders.Regrav;
@@ -16,7 +16,9 @@ namespace Sewer56.Patcher.Riders.Cli;
 
 public static class PatchApplier
 {
-#if SRDX
+#if SRDXSelfContained
+    public static IGamePatch Patch = new DxSelfContainedPatch();
+#elif SRDX
     public static IGamePatch Patch = new DxPatch();
 #elif REGRAV
     public static IGamePatch Patch = new RegravitifiedPatch();

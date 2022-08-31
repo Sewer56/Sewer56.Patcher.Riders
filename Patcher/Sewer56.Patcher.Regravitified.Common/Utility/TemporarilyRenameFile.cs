@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Sewer56.DeltaPatchGenerator.Lib.Utility;
 
 namespace Sewer56.Patcher.Riders.Common.Utility
 {

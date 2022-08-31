@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,10 @@
     <None Include="*.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ZstdNet" Version="1.4.5" Condition="$(DefineConstants.Contains(SRDXSelfContained))" />
   </ItemGroup>
 
   <ItemGroup>

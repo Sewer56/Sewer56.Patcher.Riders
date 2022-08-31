@@ -10,9 +10,12 @@
 
           Valid values:
           SRDX
+          SRDXSelfContained   # This one includes full ROM. Only hashchecks existing ROM.
           REGRAV
+          
+          DEV # Enables some developer tools.
     -->
-    <DefineConstants>SRDX</DefineConstants>
+    <DefineConstants>$(DefineConstants);SRDXSelfContained;DEV</DefineConstants>
     <PublishDir>../Publish</PublishDir>
 
     <!-- Common Publish Options -->
@@ -38,9 +41,9 @@
 
     <Exec Command="del /F /Q &quot;$(PublishDir)\Sewer56.Patcher.Riders.Cli.exe&quot;" IgnoreExitCode="true" />
     <Exec Command="del /F /Q &quot;$(PublishDir)\LICENSE.xml&quot;" IgnoreExitCode="true" />
-    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
-    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit-linux&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
-    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools\Binaries\wit-osx&quot;" Condition="$(DefineConstants.Contains(SRDX))" IgnoreExitCode="true" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\x86&quot;" IgnoreExitCode="true" />
+    <Exec Command="rmdir /S /Q &quot;$(PublishDir)\Tools&quot;" Condition="$(DefineConstants.Contains(REGRAV)) == false" IgnoreExitCode="true" />
+    <Exec Command="del /F /Q &quot;$(PublishDir)\Sewer56.Patcher.Riders.deps.json&quot;" IgnoreExitCode="true" />
     <Exec Command="move &quot;$(PublishDir)LICENSES.txt&quot; &quot;$(PublishDir)\LICENSE.txt&quot;" IgnoreExitCode="true" />
   </Target>
 

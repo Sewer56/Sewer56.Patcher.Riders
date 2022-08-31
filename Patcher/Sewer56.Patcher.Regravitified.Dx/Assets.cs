@@ -14,5 +14,9 @@ namespace Sewer56.Patcher.Riders.Dx
 
         public static readonly string PatchesFolder       = Path.Combine(AssetsFolder, "Patches");
         public static readonly string ToDxPatchesFolder = Path.Combine(PatchesFolder, "Vanilla to DX");
+
+#if SRDXSelfContained
+        public static readonly string AssetsBundlePath = Path.Combine(Paths.ProgramFolder, "Assets/Bundle.patch");
+#endif
     }
 }

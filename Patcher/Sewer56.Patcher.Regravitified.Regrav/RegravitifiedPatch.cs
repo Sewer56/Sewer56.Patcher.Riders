@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if REGRAV
+using System;
 using System.IO;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,3 +106,4 @@ namespace Sewer56.Patcher.Riders.Regrav
         }
     }
 }
+#endif

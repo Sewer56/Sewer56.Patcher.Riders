@@ -1,15 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
 using Sewer56.DeltaPatchGenerator.Lib;
 using Sewer56.DeltaPatchGenerator.Lib.Model;
-using Sewer56.DeltaPatchGenerator.Lib.Utility;
 using Sewer56.Patcher.Riders.Cli.Cmd;
+#if REGRAV
+using Sewer56.DeltaPatchGenerator.Lib.Utility;
 using Sewer56.Patcher.Riders.Common.Utility;
+#endif
+#if SRDXSelfContained
+using Sewer56.Patcher.Riders.Dx.Utility;
+#endif
+
+#if DEV
+using System.Diagnostics;
+#endif
 using static Sewer56.Patcher.Riders.Cli.Cmd.Options;
 
 namespace Sewer56.Patcher.Riders.Cli
@@ -31,25 +39,78 @@ namespace Sewer56.Patcher.Riders.Cli
                 with.AutoVersion = true;
             });
 
-            var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions,
-                ConvertNKitOptions, ExtractISO, ApplyPatchOptions, ApplyPatchesOptions, BuildISO, PatchGameOptions>(args);
+            var parserResult = parser.ParseArguments<GenerateHashOptions, VerifyHashOptions, GeneratePatchOptions, 
+                ApplyPatchOptions, ApplyPatchesOptions, PatchGameOptions
+
+#if !SRDXSelfContained
+                , ConvertNKitOptions
+#endif
+#if REGRAV
+                , ExtractISO 
+                , BuildISO
+#endif
+
+#if DEV
+                , CreateSelfContainedOptions
+#endif
+            > (args);
 
             var tasks = new List<Task>
             {
                 parserResult.WithParsedAsync<GenerateHashOptions>(GenerateHash),
                 parserResult.WithParsedAsync<VerifyHashOptions>(VerifyHash),
                 parserResult.WithParsedAsync<GeneratePatchOptions>(GeneratePatch),
+
+#if !SRDXSelfContained
                 parserResult.WithParsedAsync<ConvertNKitOptions>(ConvertNKit),
+#endif
+#if REGRAV
                 parserResult.WithParsedAsync<ExtractISO>(ExtractISO),
+                parserResult.WithParsedAsync<BuildISO>(BuildISO),
+#endif
                 parserResult.WithParsedAsync<ApplyPatchOptions>(ApplyPatch),
                 parserResult.WithParsedAsync<ApplyPatchesOptions>(ApplyPatches),
-                parserResult.WithParsedAsync<BuildISO>(BuildISO),
-                parserResult.WithParsedAsync<PatchGameOptions>(PatchGame)
+                parserResult.WithParsedAsync<PatchGameOptions>(PatchGame),
+#if DEV
+                parserResult.WithParsedAsync<CreateSelfContainedOptions>(XorFile)
+#endif
             };
 
             parserResult.WithNotParsed(errs => HandleParseError(parserResult, errs));
             Task.WaitAll(tasks.ToArray());
         }
+
+#if DEV
+        private async Task XorFile(CreateSelfContainedOptions createSelfContainedOptions)
+        {
+            using var progressBar = new ProgressBar();
+            var watch = Stopwatch.StartNew();
+            progressBar.Report(0.03, "Reading File");
+            var originalFile = await File.ReadAllBytesAsync(createSelfContainedOptions.File);
+
+            progressBar.Report(0.03, "Compressing File");
+            var file = Compression.Compress(originalFile, new Progress<double>(d => { progressBar.Report(0.03 + (d * 0.93), "Compressing File"); }));
+
+            progressBar.Report(0.96, "Key'ing File");
+            var key  = Xor.StringToKey(createSelfContainedOptions.Key);
+
+            unsafe
+            {
+                fixed (byte* filePtr = &file.Span[0])
+                fixed (byte* keyPtr = &key[0])
+                {
+                    Xor.Xor32(keyPtr, filePtr, file.Length);
+                }
+            }
+
+            progressBar.Report(0.97, "Saving File");
+            var outputFileStream = new FileStream(createSelfContainedOptions.OutFile, FileMode.Create);
+            await outputFileStream.WriteAsync(file);
+
+            progressBar.Report(1.0, "Done");
+            Console.WriteLine($"{watch.ElapsedMilliseconds}ms");
+        }
+#endif
 
         private async Task PatchGame(PatchGameOptions options)
         {
@@ -84,6 +145,7 @@ namespace Sewer56.Patcher.Riders.Cli
             return Task.CompletedTask;
         }
 
+#if REGRAV
         private async Task ExtractISO(ExtractISO obj)
         {
             IOEx.TryDeleteDirectory(obj.Target);
@@ -103,7 +165,9 @@ namespace Sewer56.Patcher.Riders.Cli
                 Target = obj.Target
             });
         }
+#endif
 
+#if !SRDXSelfContained
         private async Task ConvertNKit(ConvertNKitOptions obj)
         {
             using var progressBar = new ProgressBar();
@@ -114,6 +178,7 @@ namespace Sewer56.Patcher.Riders.Cli
                 Progress = (text, progress) => progressBar.Report(progress, text)
             });
         }
+#endif
 
         private Task GeneratePatch(GeneratePatchOptions obj)
         {

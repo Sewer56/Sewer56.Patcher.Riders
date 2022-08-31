@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿#if !SRDXSelfContained
+using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using Nanook.NKit;
@@ -50,3 +51,4 @@ namespace Sewer56.Patcher.Riders.Common.Utility
         }
     }
 }
+#endif

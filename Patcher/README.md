@@ -13,7 +13,7 @@ After building, you will need to copy the Assets folder from the last patcher re
 
 ## Changing Configuration
 The project can either be built in DX mode (patch vanilla -> DX) or for Regravitified.
-You can change the mode by opening `Sewer56.Patcher.Riders.csproj` and modifying the `DefineConstants` line.
+You can change the mode by opening `Directory.Build.props` and modifying the `DefineConstants` line.
 
 e.g. Build for Regravitified
 ```

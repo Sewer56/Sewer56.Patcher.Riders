@@ -44,6 +44,7 @@ namespace Sewer56.Patcher.Riders.Common.Utility
 
     public static class ProgressReporterExtensions
     {
+#if REGRAV
         public static async Task ExtractISOAndReport(this ProgressReporter reporter, string isoPath, string isoOutputPath)
         {
             reporter.Report("Extracting ISO");
@@ -68,17 +69,9 @@ namespace Sewer56.Patcher.Riders.Common.Utility
                 throw new Exception(e.Message + "\n" + $"StdOut: {stdOut}" + "\n" + $"StdErr: {stdErr}", e);
             }
         }
-
-        public static async Task ConvertNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputPath)
-        {
-            reporter.Report("Converting NKit to ISO");
-            await NKit.Convert(new NKit.ConvertOptions()
-            {
-                Source = isoPath,
-                Target = isoOutputPath
-            });
-        }
-        public static async Task ExtractNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputFolder, bool deleteIso = true)
+                
+        public static async Task ExtractNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputFolder, bool deleteIso
+ = true)
         {
             var convertedPath = Path.Combine(isoOutputFolder, "nkit.iso");
             await reporter.ConvertNKitAndReport(isoPath, convertedPath);
@@ -88,5 +81,17 @@ namespace Sewer56.Patcher.Riders.Common.Utility
             if (deleteIso)
                 File.Delete(convertedPath);
         }
+#endif
+#if !SRDXSelfContained
+        public static async Task ConvertNKitAndReport(this ProgressReporter reporter, string isoPath, string isoOutputPath)
+        {
+            reporter.Report("Converting NKit to ISO");
+            await NKit.Convert(new NKit.ConvertOptions()
+            {
+                Source = isoPath,
+                Target = isoOutputPath
+            });
+        }
+#endif
     }
 }

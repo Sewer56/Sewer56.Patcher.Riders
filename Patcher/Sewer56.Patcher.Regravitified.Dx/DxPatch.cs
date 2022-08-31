@@ -1,4 +1,5 @@
-﻿using System;
+﻿#if SRDX
+using System;
 using System.IO;
 using System.Threading.Tasks;
 using Sewer56.DeltaPatchGenerator.Lib;
@@ -81,3 +82,4 @@ namespace Sewer56.Patcher.Riders.Dx
         }
     }
 }
+#endif

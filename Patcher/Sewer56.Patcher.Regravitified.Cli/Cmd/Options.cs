@@ -93,5 +93,18 @@ namespace Sewer56.Patcher.Riders.Cli.Cmd
             [Option("rom", Required = true, HelpText = "Path to the ROM to be patched.")]
             public string RomPath { get; internal set; }
         }
+
+        [Verb("CreateSelfContained", HelpText = "For testing only. Creates a self contained ROM file.")]
+        internal class CreateSelfContainedOptions
+        {
+            [Option("file", Required = true, HelpText = "Path to the file.")]
+            public string File { get; internal set; }
+
+            [Option("output", Required = true, HelpText = "Path to the file to output.")]
+            public string OutFile { get; internal set; }
+
+            [Option("key", Required = true, HelpText = "String key, up to 32 bytes.")]
+            public string Key { get; internal set; }
+        }
     }
 }
