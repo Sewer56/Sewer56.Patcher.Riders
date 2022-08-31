@@ -43,6 +43,10 @@
   <ItemGroup>
     <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Cli\Sewer56.Patcher.Riders.Cli.csproj" />
   </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="del /F /Q &quot;$(OutputPath)\Sewer56.Patcher.Riders.deps.json&quot;" IgnoreExitCode="true" />
+  </Target>
   
 
 </Project>
