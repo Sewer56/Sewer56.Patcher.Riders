@@ -14,7 +14,7 @@ namespace Sewer56.Patcher.Riders.Dx
     {
         public string FileName { get; set; } = "Sonic Riders DX.iso";
 
-        public byte[] Key { get; set; } = Xor.StringToKey("Hi Exortile. Miss me babe?");
+        public byte[] Key { get; set; } = Xor.StringToKey("LB2GsjDxia6Po08yC2GoUX8oD3bhDbh");
 
         public ulong[] KnownHashes = new ulong[]
         {
@@ -51,9 +51,7 @@ namespace Sewer56.Patcher.Riders.Dx
             title = "The one and only step.";
             text = "Please select a compatible GameCube ROM of Sonic Riders to patch.\n" +
                    "Supported ROMs include:\n" +
-                   "- Sonic Riders (USA)\n" +
-                   "- Sonic Riders (Japan)\n" +
-                   "- Sonic Riders (Europe)\n" +
+                   "- Sonic Riders (USA, Japan, Europe)\n" +
                    "- Sonic Riders DX (1.0, 1.0.1)\n" +
                    "- Sonic Riders Netplay (1.0, 1.1.2)\n" +
                    "- Sonic Riders Tournament Edition (1.2, 1.2.1, 1.2.5, 1.3, 1.4, 1.4.1, 1.4.2)";

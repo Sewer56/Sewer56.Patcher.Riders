@@ -40,7 +40,8 @@ public static class PatchApplier
             await Patch.ApplyPatch(sourceFilePath, outputPath, reportProgressCallback);
 
             showDialog("Patch Success", $"New ROM Saved to: {outputPath}\n" +
-                                        $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec");
+                                        $"Patching completed in: {timer.Elapsed.Minutes}min {timer.Elapsed.Seconds}sec\n" +
+                                        $"Music: Reloaded Installer #10 by LHS; show the author some love <3");
         }
         catch (AggregateException ex)
         {

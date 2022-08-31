@@ -8,17 +8,23 @@
                          mc:Ignorable="d"
                          Title="{DynamicResource PatcherTitle}" Height="Auto" Width="Auto" 
                          SizeToContent="WidthAndHeight"
+                         ResizeMode="NoResize"
                          Style="{DynamicResource ReloadedWindow}">
     <Grid Margin="{DynamicResource PageMargin}" DataContext="{Binding ViewModel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}">
         <StackPanel Orientation="Vertical">
 
             <!-- Banner and Build Date -->
             <Image x:Name="Banner"
-                   Style="{DynamicResource HighQualityImage}"
+                   RenderOptions.EdgeMode="Aliased"
+                   RenderOptions.CachingHint="Cache"
                    MaxWidth="600"
                    Source="{DynamicResource IconGame}"
                    StretchDirection="Both"
-                   Margin="{DynamicResource BannerMargin}"/>
+                   Margin="{DynamicResource BannerMargin}">
+                <Image.CacheMode>
+                    <BitmapCache />
+                </Image.CacheMode>
+            </Image>
 
             <!-- Progress -->
             <ProgressBar Height="{Binding Path=ActualHeight, ElementName=Button}" 
@@ -33,7 +39,7 @@
 
             <!-- Patch -->
             <Button x:Name="Button" Margin="{DynamicResource CommonItemVerticalMargin}" 
-                    Content="Patch" Click="Button_OnClick" 
+                    Content="Elevate Your Experience!" Click="Button_OnClick" 
                     Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
 
 
