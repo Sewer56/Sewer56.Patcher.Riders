@@ -41,5 +41,10 @@ namespace Sewer56.Patcher.Riders
         }
 
         private async void Button_OnClick(object sender, RoutedEventArgs e) => await Task.Run(() => ViewModel.Patch());
+
+        private void Music_Click(object sender, RoutedEventArgs e)
+        {
+            _bassMusicPlayer.Toggle();
+        }
     }
 }

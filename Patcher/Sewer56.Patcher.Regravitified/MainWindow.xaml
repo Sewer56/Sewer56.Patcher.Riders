@@ -38,9 +38,17 @@
                        Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityConverter.Instance}}"/>
 
             <!-- Patch -->
-            <Button x:Name="Button" Margin="{DynamicResource CommonItemVerticalMargin}" 
-                    Content="Elevate Your Experience!" Click="Button_OnClick" 
-                    Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+
+                <Button x:Name="Button" Margin="{DynamicResource CommonItemCombinedMargin}" 
+                        Content="Elevate Your Experience!" Click="Button_OnClick" 
+                        Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
+
+                <Button Margin="{DynamicResource CommonItemCombinedMargin}" 
+                        Content="♪" Click="Music_Click" 
+                        Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
+
+            </StackPanel>
 
 
         </StackPanel>
