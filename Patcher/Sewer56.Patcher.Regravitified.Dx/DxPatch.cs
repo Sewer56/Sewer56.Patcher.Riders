@@ -14,13 +14,13 @@ namespace Sewer56.Patcher.Riders.Dx
     {
         public const string ExpectedRomName = "Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso";
 
-        public string FileName { get; set; } = "Sonic Riders DX.iso";
+        public string FileName { get; set; } = "Sonic Riders DX 2.0.1.iso";
 
         public bool GetInstructionDialog(out string title, out string text)
         {
             title = "The one and only step.";
-            text = "Please select a North American (NTSC-U) GameCube ROM of Sonic Riders to patch.\n" +
-                   "Once started, the patching process will take a minute or two.";
+            text = "Please select a Sonic Riders DX 2.0.0 ISO to patch.\n" +
+                   "Once started, the patching process will take a few seconds.";
 
             return true;
         }
@@ -48,7 +48,7 @@ namespace Sewer56.Patcher.Riders.Dx
             reporter.Report("Verifying Clean NTSC-U Copy");
             if (!HashSet.Verify(FileHashSet.FromDirectory(Assets.OriginalHashesFolder), sourceFolder, out var missingFiles, out var mismatchFiles))
             {
-                ThrowHelpers.ThrowVerificationFailed("Failed to Verify Clean NTSC-U Copy Post Patching.\n" +
+                ThrowHelpers.ThrowVerificationFailed("Failed to Verify Clean NTSC-U Copy Pre Patching.\n" +
                                                      "Most likely this means one of the following: \n" +
                                                      "- Your ROM is a bad dump.\n" +
                                                      "- Your ROM is from an unsupported region.\n" +
@@ -64,7 +64,7 @@ namespace Sewer56.Patcher.Riders.Dx
             reporter.Report("Verifying Patched Game");
             if (!HashSet.Verify(FileHashSet.FromDirectory(Assets.ModHashesFolder), tempFolder, out missingFiles, out mismatchFiles))
             {
-                ThrowHelpers.ThrowVerificationFailed("Failed to Verify Clean NTSC-U Copy Post Patching.\n" +
+                ThrowHelpers.ThrowVerificationFailed("Failed to Verify Patched Game.\n" +
                                                      "Most likely this means one of the following: \n" +
                                                      "- Your ROM is a bad dump.\n" +
                                                      "- Your ROM is from an unsupported region.\n" +

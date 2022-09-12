@@ -7,6 +7,9 @@ using CommandLine.Text;
 using Sewer56.DeltaPatchGenerator.Lib;
 using Sewer56.DeltaPatchGenerator.Lib.Model;
 using Sewer56.Patcher.Riders.Cli.Cmd;
+#if SRDX || REGRAV
+using Sewer56.Patcher.Riders.Common.Utility;
+#endif
 #if REGRAV
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
 using Sewer56.Patcher.Riders.Common.Utility;

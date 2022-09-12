@@ -12,7 +12,7 @@ namespace Sewer56.Patcher.Riders.Dx
 {
     public class DxSelfContainedPatch : IGamePatch
     {
-        public string FileName { get; set; } = "Sonic Riders DX.iso";
+        public string FileName { get; set; } = "Sonic Riders DX 2.0.1.iso";
 
         public byte[] Key { get; set; } = Xor.StringToKey("LB2GsjDxia6Po08yC2GoUX8oD3bhDbh");
 
@@ -20,6 +20,7 @@ namespace Sewer56.Patcher.Riders.Dx
         {
             2859023419091715420,  // Sonic Riders DX Version 1.0.0
             11478741229583558586, // Sonic Riders DX Version 1.0.1
+            12475251216528109950, // Sonic Riders DX Version 2.0.0
             3627067645686224037,  // Sonic Riders Netplay Mod 1.1.2.iso
             17309300132228947760, // Sonic Riders Netplay v1.0.0
             2870049280778264855,  // Sonic Riders NTSC-J.iso
@@ -44,6 +45,7 @@ namespace Sewer56.Patcher.Riders.Dx
             3345955917279735753,  // SRTE 1.4.0.iso
             16530656863935718301, // SRTE 1.4.1.iso
             3387789659416232848,  // SRTE 1.4.2.iso
+            1798809554536730225,  // SRTE 2.0.0.iso
         };
 
         public bool GetInstructionDialog(out string title, out string text)
@@ -52,9 +54,9 @@ namespace Sewer56.Patcher.Riders.Dx
             text = "Please select a compatible GameCube ROM of Sonic Riders to patch.\n" +
                    "Supported ROMs include:\n" +
                    "- Sonic Riders (USA, Japan, Europe)\n" +
-                   "- Sonic Riders DX (1.0, 1.0.1)\n" +
+                   "- Sonic Riders DX (1.0, 1.0.1, 2.0.0)\n" +
                    "- Sonic Riders Netplay (1.0, 1.1.2)\n" +
-                   "- Sonic Riders Tournament Edition (1.2, 1.2.1, 1.2.5, 1.3, 1.4, 1.4.1, 1.4.2)";
+                   "- Sonic Riders Tournament Edition (1.2, 1.2.1, 1.2.5, 1.3, 1.4, 1.4.1, 1.4.2, 2.0)";
 
             return true;
         }
