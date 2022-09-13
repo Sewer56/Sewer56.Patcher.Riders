@@ -3,7 +3,7 @@ using System;
 using System.IO;
 using System.Threading;
 using Sewer56.Patcher.Riders.Common.Utility;
-using ZstdNet;
+using ZstdSharp;
 
 namespace Sewer56.Patcher.Riders.Dx.Utility;
 
@@ -15,7 +15,7 @@ public class Compression
     public static Memory<byte> Compress(byte[] input, IProgress<double> progress)
     {
         const int reportSize = 4194304;
-        var compOptions  = new CompressionOptions(CompressionOptions.MaxCompressionLevel);
+        var compOptions  = new Compressor(Compressor.MaxCompressionLevel);
         using var outputStream = new MemoryStream(input.Length);
         
         // Write compressed size
@@ -38,7 +38,7 @@ public class Compression
     {
         const int bufferSize   = 4194304;
 
-        var compOptions        = new DecompressionOptions();
+        var compOptions        = new Decompressor();
         using var inputStream  = new MemoryStream(input);
 
         // Read decompressed size.
