@@ -4,6 +4,8 @@ Extensible and easily modifiable patcher created for the patching of Wii & GameC
 
 Was originally created for [Riders Regravitified](https://www.youtube.com/watch?v=kWI9TMnisa8); but has since been reused for other games.  I did some git magic to move this source out of SRRG's repository to make it available to the public.
 
+![Preview](./Readme_Preview.png)
+
 ## Building
 - Download [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) and [Visual Studio 2022+](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false) or [Rider](https://www.jetbrains.com/rider/download/#section=windows).  
 - Clone this repository (and all submodules).  
