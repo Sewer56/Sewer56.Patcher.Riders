@@ -3,10 +3,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Controls;
 using Reloaded.WPF.Theme.Default;
-using Sewer56.Patcher.Riders.Effect.TitleEffectStates;
+using Sewer56.Patcher.Riders.Effect.SRDX.TitleEffectStates;
 using Sewer56.Patcher.Riders.Utility;
 
-namespace Sewer56.Patcher.Riders.Effect;
+namespace Sewer56.Patcher.Riders.Effect.SRDX;
 
 public class TitleDXv2Effect
 {

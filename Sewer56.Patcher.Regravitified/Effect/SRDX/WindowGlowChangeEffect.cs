@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Diagnostics;
-using Reloaded.WPF.Animations.Samples;
-using Reloaded.WPF.Theme.Default;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Threading;
+using Reloaded.WPF.Animations.Samples;
+using Reloaded.WPF.Theme.Default;
 using Reloaded.WPF.Utilities;
-using Sewer56.Patcher.Riders.Effect.Utility;
-using Color = System.Windows.Media.Color;
+using Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 using Sewer56.Patcher.Riders.Utility;
+using Color = System.Windows.Media.Color;
 
-namespace Sewer56.Patcher.Riders.Effect;
+namespace Sewer56.Patcher.Riders.Effect.SRDX;
 
 public class ThemeHueShiftEffect
 {

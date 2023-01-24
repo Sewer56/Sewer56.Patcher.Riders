@@ -1,4 +1,4 @@
-﻿namespace Sewer56.Patcher.Riders.Effect.Utility;
+﻿namespace Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
 public struct TextTyperEffectHelper
 {

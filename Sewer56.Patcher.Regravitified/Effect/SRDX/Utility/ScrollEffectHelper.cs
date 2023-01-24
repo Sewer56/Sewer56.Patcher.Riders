@@ -1,12 +1,8 @@
 ﻿using System.Numerics;
-using System.Text;
-using System.Transactions;
 using System.Windows;
 using System.Windows.Media;
-using System.Xml.Linq;
-using static System.Net.Mime.MediaTypeNames;
 
-namespace Sewer56.Patcher.Riders.Effect.Utility;
+namespace Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
 public struct ScrollEffectHelper
 {

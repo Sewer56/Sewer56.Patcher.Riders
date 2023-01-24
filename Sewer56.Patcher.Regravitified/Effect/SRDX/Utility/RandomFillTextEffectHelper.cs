@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Sewer56.Patcher.Riders.Utility;
 
-namespace Sewer56.Patcher.Riders.Effect.Utility;
+namespace Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
 public struct RandomFillTextEffectHelper
 {

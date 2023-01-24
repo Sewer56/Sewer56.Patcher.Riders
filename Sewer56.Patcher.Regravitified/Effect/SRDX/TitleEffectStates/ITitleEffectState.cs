@@ -1,4 +1,4 @@
-﻿namespace Sewer56.Patcher.Riders.Effect.TitleEffectStates;
+﻿namespace Sewer56.Patcher.Riders.Effect.SRDX.TitleEffectStates;
 
 /// <summary>
 /// Common interface for individual effects in titles.

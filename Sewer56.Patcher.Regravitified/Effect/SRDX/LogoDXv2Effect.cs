@@ -1,11 +1,9 @@
 ﻿using Reloaded.WPF.Theme.Default;
-using Sewer56.Patcher.Riders.Effect.TitleEffectStates;
 using System;
 using System.Diagnostics;
-using System.Linq;
 using System.Windows.Controls;
 using System.Windows.Media;
-using Sewer56.Patcher.Riders.Effect.Utility;
+using Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 using Sewer56.Patcher.Riders.Utility;
 
 namespace Sewer56.Patcher.Riders.Effect;

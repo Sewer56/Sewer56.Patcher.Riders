@@ -1,6 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 
-namespace Sewer56.Patcher.Riders.Effect.Utility;
+namespace Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
 public struct UpdateThrottler
 {

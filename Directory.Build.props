@@ -15,7 +15,7 @@
           
           DEV # Enables some developer tools.
     -->
-    <DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstants>
+    <DefineConstants>$(DefineConstants);SRDX</DefineConstants>
     <PublishDir>../Publish</PublishDir>
 
     <!-- Common Publish Options -->

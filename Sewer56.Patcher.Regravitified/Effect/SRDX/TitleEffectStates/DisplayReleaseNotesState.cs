@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using Sewer56.Patcher.Riders.Effect.Utility;
+using Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
-namespace Sewer56.Patcher.Riders.Effect.TitleEffectStates;
+namespace Sewer56.Patcher.Riders.Effect.SRDX.TitleEffectStates;
 
 public struct DisplayReleaseNotesState : ITitleEffectState
 {

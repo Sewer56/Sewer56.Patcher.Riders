@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Windows.Media;
 using System.Windows;
 using System.Windows.Markup;
+using System.Windows.Media;
 
-namespace Sewer56.Patcher.Riders.Effect.Utility;
+namespace Sewer56.Patcher.Riders.Effect.SRDX.Utility;
 
 #nullable enable
 public class WpfUtilities
