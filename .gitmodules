@@ -1,0 +1,6 @@
+[submodule "Submodules/Sewer56.DeltaPatchGenerator"]
+	path = Submodules/Sewer56.DeltaPatchGenerator
+	url = https://github.com/Sewer56/Sewer56.DeltaPatchGenerator.git
+[submodule "Submodules/NKit"]
+	path = Submodules/NKit
+	url = https://github.com/Sewer56/NKit.git
