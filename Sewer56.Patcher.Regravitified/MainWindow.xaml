@@ -45,7 +45,16 @@
                         Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
 
                 <Button Margin="{DynamicResource CommonItemCombinedMargin}" 
-                        Content="♪" Click="Music_Click" 
+                        Height="{Binding Path=ActualHeight, ElementName=Button}"
+                        Width="{Binding Path=ActualHeight, ElementName=Button}"
+                        Content="♪" FontSize="32" Click="Music_Click" Padding="0"
+                        Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
+
+
+                <Button Margin="{DynamicResource CommonItemCombinedMargin}" 
+                        Height="{Binding Path=ActualHeight, ElementName=Button}"
+                        Width="{Binding Path=ActualHeight, ElementName=Button}"
+                        Content="ⓘ" FontSize="32" Click="About_Click" Padding="0" 
                         Visibility="{Binding Path=IsPatching, Converter={x:Static converters:BooleanToVisibilityInverseConverter.Instance}}" />
 
             </StackPanel>

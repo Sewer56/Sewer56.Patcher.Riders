@@ -56,5 +56,12 @@ namespace Sewer56.Patcher.Riders
         {
             _bassMusicPlayer.Toggle();
         }
+
+        private void About_Click(object sender, RoutedEventArgs e)
+        {
+            var aboutWindow = new AboutWindow();
+            aboutWindow.Owner = this;
+            aboutWindow.ShowDialog();
+        }
     }
 }

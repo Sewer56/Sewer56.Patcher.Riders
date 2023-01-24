@@ -1,0 +1,66 @@
+﻿<default:ReloadedWindow x:Class="Sewer56.Patcher.Riders.AboutWindow"
+        xmlns:default="clr-namespace:Reloaded.WPF.Theme.Default;assembly=Reloaded.WPF.Theme.Default" 
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Sewer56.Patcher.Riders"
+        mc:Ignorable="d"
+        Title="About Patcher" Height="Auto" Width="Auto" 
+        SizeToContent="WidthAndHeight"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner"
+        Style="{DynamicResource ReloadedWindow}">
+    <StackPanel Margin="{DynamicResource PageMargin}">
+        
+        <!-- Title -->
+        <TextBlock Text="Riders Patcher by Sewer56" Style="{DynamicResource DefaultTextBlock}" HorizontalAlignment="Center" />
+        <TextBlock Text="GPL V3, 2021" Style="{DynamicResource DefaultTextBlock}" HorizontalAlignment="Center" />
+        <Separator Margin="{DynamicResource CommonItemVerticalMargin}"/>
+
+        <!-- Open Source Libraries -->
+        <TextBlock Text="== Special Thanks to Authors of 3rd Party Libraries &amp; Assets ==" Style="{DynamicResource DefaultTextBlock}" Margin="0,0,0,10"/>
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - CommandLineParser: 
+            <Hyperlink NavigateUri="https://github.com/commandlineparser/commandline" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - NKit [Modified]: 
+            <Hyperlink NavigateUri="https://github.com/Sewer56/NKit" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - xxHash64: 
+            <Hyperlink NavigateUri="https://github.com/uranium62/xxHash" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - Wiimm's ISO Tool: 
+            <Hyperlink NavigateUri="https://github.com/Wiimm/wiimms-iso-tools" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - BASS Audio Library: 
+            <Hyperlink NavigateUri="https://www.un4seen.com" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+        <TextBlock Style="{DynamicResource DefaultTextBlock}">
+            - RLD Installer #10 by LHS: 
+            <Hyperlink NavigateUri="https://modarchive.org/index.php?request=view_by_moduleid&amp;query=179541" RequestNavigate="Hyperlink_RequestNavigate">
+                Source
+            </Hyperlink>
+        </TextBlock>
+
+    </StackPanel>
+</default:ReloadedWindow>
