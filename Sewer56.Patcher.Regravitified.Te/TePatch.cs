@@ -14,7 +14,7 @@ namespace Sewer56.Patcher.Riders.Te
     {
         public const string ExpectedRomName = "Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso";
 
-        public string FileName { get; set; } = "Sonic Riders TE 2.4.iso";
+        public string FileName { get; set; } = "Sonic Riders TE 2.4.iso"; // NOTE: This needs to be modular based on online updater details
 
         public bool GetInstructionDialog(out string title, out string text)
         {
