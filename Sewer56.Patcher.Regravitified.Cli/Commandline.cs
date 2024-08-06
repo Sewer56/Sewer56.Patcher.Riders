@@ -10,7 +10,7 @@ using Sewer56.Patcher.Riders.Cli.Cmd;
 #if SRDX || REGRAV
 using Sewer56.Patcher.Riders.Common.Utility;
 #endif
-#if REGRAV
+#if REGRAV || SRTE
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
 using Sewer56.Patcher.Riders.Common.Utility;
 #endif

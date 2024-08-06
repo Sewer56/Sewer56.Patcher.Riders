@@ -2,6 +2,8 @@
 using Sewer56.Patcher.Riders.Dx;
 #elif REGRAV
 using Sewer56.Patcher.Riders.Regrav;
+#elif SRTE
+using Sewer56.Patcher.Riders.Te;
 #endif
 
 using System;
@@ -22,6 +24,8 @@ public static class PatchApplier
     public static IGamePatch Patch = new DxPatch();
 #elif REGRAV
     public static IGamePatch Patch = new RegravitifiedPatch();
+#elif SRTE
+    public static IGamePatch Patch = new TePatch();
 #endif
 
     /// <summary>
