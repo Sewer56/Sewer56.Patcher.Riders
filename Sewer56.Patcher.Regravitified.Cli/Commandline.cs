@@ -10,14 +10,14 @@ using Sewer56.Patcher.Riders.Cli.Cmd;
 #if SRDX || REGRAV
 using Sewer56.Patcher.Riders.Common.Utility;
 #endif
-#if REGRAV || SRTE
+#if REGRAV
 using Sewer56.DeltaPatchGenerator.Lib.Utility;
 using Sewer56.Patcher.Riders.Common.Utility;
 #endif
 #if SRDXSelfContained
 using Sewer56.Patcher.Riders.Dx.Utility;
 #endif
-
+// Note: TE may need a define, as lines 177-181 are unresolved symbols without the common utility folder
 #if DEV
 using System.Diagnostics;
 #endif

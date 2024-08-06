@@ -21,7 +21,11 @@ Alternatively in the commandline you can run:
    - `dotnet publish ./Sewer56.Patcher.Regravitified/Sewer56.Patcher.Riders.csproj -c Release --self-contained false`
 
 ## Changing Configuration
-The project has two presets, DX Mode for original Riders and Regrav mode for Zero Gravity based ROMs.  
+The project has three presets.
+>**SRDX Mode**: for original Riders ROMs to SRDX.\
+>**SRTE Mode**: for original Riders ROMs to SRTE.\
+>**Regrav Mode**: for Zero Gravity based ROMs.
+
 You can change the mode by opening `Directory.Build.props` and modifying the `DefineConstants` line.  
 
 e.g. Build for Regravitified 
@@ -30,11 +34,16 @@ e.g. Build for Regravitified
 ```
 
 or 
-e.g. Build for OG Riders  
+e.g. Build for OG Riders to SRDX
 ```
 <DefineConstants>SRDX</DefineConstants>
 ```
 
+or
+e.g. Build for OG Riders to SRTE
+```
+<DefineConstants>SRTE</DefineConstants>
+```
 ## Project Structure
 
 - **Sewer56.Patcher.Riders:** The UI Components of the patcher.  
@@ -62,12 +71,12 @@ Make a PR to this repo 😇.
 ## Generating Patches
 
 The patcher is actually a command line program that displays a UI only if it receives no parameters.
-For reference, try
+For reference, try:
 ```
 .\Sewer56.Patcher.Riders.Cli.exe --help
 ```
 
-You will get.
+You will get the following:
 ```
 Sewer56.Patcher.Riders 1.0.0
 Created by Sewer56, licensed under GNU GPL V3
@@ -122,7 +131,7 @@ Hashes are used for verifying whether the ROM is correct before repacking it dur
    - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.  
    - Place patch in `Assets\RG\Patches\To Regrav\US 1.0.1 to Regrav`.  
 
-## Creating Patches for Original Riders [DefineConstants == 'SRDX']
+## Creating Patches for Original Riders to SRDX [DefineConstants == 'SRDX']
 
 1. Copy the `Assets` folder from last released patch.
    - This includes the existing hashes for vanilla ROMs, etc.  
@@ -159,6 +168,27 @@ To create these, you will need to build the patcher with `<DefineConstants>DEV</
    - Update the hashes, to include any more recently released ROMs.  
 
 Build with `<DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstants>` when publishing to end users.
+
+## Creating Patches for Original Riders to SRTE [DefineConstants == 'SRTE']
+
+1. Copy the `Assets` folder from last released patch.
+   - This includes the existing hashes for vanilla ROMs, etc.
+
+2. Generate Hashes for new Mod ISO.
+
+   - To do this, run `Sewer56.Patcher.Riders.Cli.exe GenerateHashes`.
+   - Place new `hashes.json` file in `Assets\TE\Hashes\TE ROM`.
+
+3. Extract and verify your copy of the NTSC-U Version of Sonic Riders.
+
+   - Must be a good dump, e.g. the one from Vimm's Lair.
+   - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.
+   - Use the hashes in `Assets\TE\Hashes\Original ROM`.
+
+4. Generate new patch from NTSC-U to SRDX.
+
+   - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.
+   - Place patch in `Assets\TE\Patches\Vanilla to TE\Patch`.
 
 ## Usage on Linux/OSX
 
