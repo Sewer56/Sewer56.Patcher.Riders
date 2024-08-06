@@ -12,6 +12,7 @@
           SRDX
           SRDXSelfContained   # This one includes full ROM. Only hashchecks existing ROM.
           REGRAV
+          SRTE
           
           DEV # Enables some developer tools.
     -->

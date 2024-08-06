@@ -13,6 +13,7 @@
     <!-- Needed for functional console -->
     <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
     <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX)) or $(DefineConstants.Contains(SRDXSelfContained))">..\Sewer56.Patcher.Regravitified.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Te\Theme\Te\Images\SRTE_Icon.ico</ApplicationIcon>
 
     <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
   </PropertyGroup>
