@@ -3,7 +3,7 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:Reloaded.WPF.Controls;assembly=Reloaded.WPF">
 
-    <sys:String x:Key="PatcherTitle">DX Patcher</sys:String>
+    <sys:String x:Key="PatcherTitle">TE Patcher</sys:String>
 
     <!-- 
         This is an example of a more advanced theme. 
@@ -21,16 +21,16 @@
     <ResourceDictionary.MergedDictionaries>
         
         <!-- Redefine the Theme Colours -->
-        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Dx/Colours.xaml"/>
+        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Te/Colours.xaml"/>
 
         <!-- Redefine the Launcher Control Styles -->
-        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Dx/Controls.xaml"/>
+        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Te/Controls.xaml"/>
 
         <!-- Redefine the Reloaded.WPF (Library) Control Styles -->
-        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Dx/Styles.xaml"/>
+        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Te/Styles.xaml"/>
 
         <!-- Redefine the Images -->
-        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Dx/Images.xaml"/>
+        <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Te/Images.xaml"/>
 
         <!-- 
             Note: You can technically import just Controls.xaml, since that imports Styles which imports Colours.

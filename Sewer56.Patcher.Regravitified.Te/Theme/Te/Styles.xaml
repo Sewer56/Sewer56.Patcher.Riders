@@ -16,7 +16,7 @@
                 <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Default/Settings.xaml"/>
 
                 <!-- Using our own Colours Instead -->
-                <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Dx/Colours.xaml"/>
+                <controls:SharedResourceDictionary Source="pack://siteoforigin:,,,/Theme/Te/Colours.xaml"/>
             
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

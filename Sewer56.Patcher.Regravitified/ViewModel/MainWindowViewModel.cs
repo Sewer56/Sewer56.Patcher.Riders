@@ -13,6 +13,8 @@ using Sewer56.Patcher.Riders.Cli;
 using Sewer56.Patcher.Riders.Dx;
 #elif REGRAV
 using Sewer56.Patcher.Riders.Regrav;
+#elif SRTE
+using Sewer56.Patcher.Riders.Te;
 #endif
 
 namespace Sewer56.Patcher.Riders.ViewModel
