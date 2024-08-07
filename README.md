@@ -185,7 +185,7 @@ Build with `<DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstan
    - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.
    - Use the hashes in `Assets\TE\Hashes\Original ROM`.
 
-4. Generate new patch from NTSC-U to SRDX.
+4. Generate new patch from NTSC-U to SRTE.
 
    - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.
    - Place patch in `Assets\TE\Patches\Vanilla to TE\Patch`.
