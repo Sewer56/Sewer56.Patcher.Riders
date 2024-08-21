@@ -14,12 +14,13 @@ namespace Sewer56.Patcher.Riders.Te
     {
         public const string ExpectedRomName = "Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso";
 
-        public string FileName { get; set; } = "Sonic Riders TE 2.4.iso"; // NOTE: This needs to be modular based on online updater details
+        public string FileName { get; set; } = "Sonic Riders TE.iso"; // This is the default value.
+
 
         public bool GetInstructionDialog(out string title, out string text)
         {
             title = "The one and only step.";
-            text = "Please select a Sonic Riders ISO to patch.\n" +
+            text = "Please select a Vanilla Sonic Riders ISO to patch.\n" +
                    "Once started, the patching process will take a few seconds.";
 
             return true;
