@@ -28,7 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj" />
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Common\Sewer56.Patcher.Riders.Common.csproj" />
   </ItemGroup>
 
 </Project>

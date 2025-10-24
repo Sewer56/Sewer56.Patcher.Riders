@@ -3,21 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.31911.260
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders", "Sewer56.Patcher.Regravitified\Sewer56.Patcher.Riders.csproj", "{9CE477DA-4540-4110-AFF5-455B658ECD6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders", "Sewer56.Patcher.Riders\Sewer56.Patcher.Riders.csproj", "{9CE477DA-4540-4110-AFF5-455B658ECD6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Tests", "Sewer56.Patcher.Regravitified.Tests\Sewer56.Patcher.Riders.Tests.csproj", "{E09C30D9-7F41-4AFE-945F-B3FDCED6CAD5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Tests", "Sewer56.Patcher.Riders.Tests\Sewer56.Patcher.Riders.Tests.csproj", "{E09C30D9-7F41-4AFE-945F-B3FDCED6CAD5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Common", "Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj", "{92291413-6C36-4DB1-80EF-61EAC9BCC07D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Common", "Sewer56.Patcher.Riders.Common\Sewer56.Patcher.Riders.Common.csproj", "{92291413-6C36-4DB1-80EF-61EAC9BCC07D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Regrav", "Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj", "{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Regrav", "Sewer56.Patcher.Riders.Regrav\Sewer56.Patcher.Riders.Regrav.csproj", "{8DA9786B-CBF9-4AF5-89F6-62F2E800F3AD}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Submodules", "Submodules", "{0EC63F93-1766-4789-8E9E-192849A402B8}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.DeltaPatchGenerator.Lib", "Submodules\Sewer56.DeltaPatchGenerator\Sewer56.DeltaPatchGenerator.Lib\Sewer56.DeltaPatchGenerator.Lib.csproj", "{E25CC718-B90E-4D23-8C25-C0174860D7E4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Dx", "Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj", "{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sewer56.Patcher.Riders.Dx", "Sewer56.Patcher.Riders.Dx\Sewer56.Patcher.Riders.Dx.csproj", "{4E77E378-1EC9-4E7B-B386-0B9A7295CE54}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Riders.Cli", "Sewer56.Patcher.Regravitified.Cli\Sewer56.Patcher.Riders.Cli.csproj", "{EACB1303-C2B0-4DBC-9054-8655DCF98BED}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Riders.Cli", "Sewer56.Patcher.Riders.Cli\Sewer56.Patcher.Riders.Cli.csproj", "{EACB1303-C2B0-4DBC-9054-8655DCF98BED}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{26E62A9E-7979-4121-9F0E-0162BC98DE96}"
 	ProjectSection(SolutionItems) = preProject
@@ -26,7 +26,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKit", "Submodules\NKit\NKit\NKit.csproj", "{7B7C6C51-4581-4F59-AE5C-F40B779680AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Riders.Te", "Sewer56.Patcher.Regravitified.Te\Sewer56.Patcher.Riders.Te.csproj", "{9E337F9B-9B81-4C35-9908-60203FB3285B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Riders.Te", "Sewer56.Patcher.Riders.Te\Sewer56.Patcher.Riders.Te.csproj", "{9E337F9B-9B81-4C35-9908-60203FB3285B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

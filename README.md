@@ -9,7 +9,7 @@ Was originally created for [Riders Regravitified](https://www.youtube.com/watch?
 ## Building
 - Download [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) and [Visual Studio 2022+](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false) or [Rider](https://www.jetbrains.com/rider/download/#section=windows).  
 - Clone this repository (and all submodules).  
-- Open the solution `Sewer56.Patcher.Regravitified.sln`.  
+- Open the solution `Sewer56.Patcher.Riders.sln`.  
 - Build.
 
 ## Publishing
@@ -18,7 +18,7 @@ In Visual Studio:
    - Right Click `Sewer56.Patcher.Riders` -> Publish.  
 
 Alternatively in the commandline you can run:  
-   - `dotnet publish ./Sewer56.Patcher.Regravitified/Sewer56.Patcher.Riders.csproj -c Release --self-contained false`
+   - `dotnet publish ./Sewer56.Patcher.Riders/Sewer56.Patcher.Riders.csproj -c Release --self-contained false`
 
 ## Changing Configuration
 The project has three presets.
@@ -61,7 +61,7 @@ e.g. Build for OG Riders to SRTE
     - Fix Namespaces in your new project (i.e. `Alt+Enter` or `Alt+.` on a namespace, and fix for project).  
   
 - Open `Sewer56.Patcher.Riders.Cli.csproj`, add a conditional project reference:  
-  - e.g. for `REGRAV` it is defined as `<ProjectReference Include="..\Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />`.  
+  - e.g. for `REGRAV` it is defined as `<ProjectReference Include="..\Sewer56.Patcher.Riders.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />`.  
   - Add alternative icon in `Sewer56.Patcher.Riders.csproj`.  
 
 - Add your new define tag to `Directory.Build.props`.  
