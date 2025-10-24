@@ -11,11 +11,12 @@
     <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
 
     <!-- Needed for functional console -->
-    <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Regravitified.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
-    <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX)) or $(DefineConstants.Contains(SRDXSelfContained))">..\Sewer56.Patcher.Regravitified.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
-    <ApplicationIcon Condition="$(DefineConstants.Contains(SRTE))">..\Sewer56.Patcher.Regravitified.Te\Theme\Te\Images\SRTE_Icon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="$(DefineConstants.Contains(REGRAV))">..\Sewer56.Patcher.Riders.Regrav\Theme\Regrav\Images\SRRG_Green_icon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="$(DefineConstants.Contains(SRDX)) or $(DefineConstants.Contains(SRDXSelfContained))">..\Sewer56.Patcher.Riders.Dx\Theme\Dx\Images\SRDX_Icon.ico</ApplicationIcon>
+    <ApplicationIcon Condition="$(DefineConstants.Contains(SRTE))">..\Sewer56.Patcher.Riders.Te\Theme\Te\Images\SRTE_Icon.ico</ApplicationIcon>
 
     <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
+    <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
   </PropertyGroup>
 
   <ItemGroup>
@@ -45,13 +46,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Cli\Sewer56.Patcher.Riders.Cli.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Reloaded.WPF.Animations">
-      <HintPath>..\..\..\Reloaded.WPF\Source\Reloaded.WPF.Animations\bin\Debug\netcoreapp3.0\Reloaded.WPF.Animations.dll</HintPath>
-    </Reference>
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Cli\Sewer56.Patcher.Riders.Cli.csproj" />
   </ItemGroup>
 
   <ItemGroup>

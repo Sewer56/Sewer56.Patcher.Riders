@@ -16,10 +16,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Common\Sewer56.Patcher.Riders.Common.csproj" />
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Dx\Sewer56.Patcher.Riders.Dx.csproj" Condition="$(DefineConstants.Contains(SRDX)) or $(DefineConstants.Contains(SRDXSelfContained))" />
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />
-    <ProjectReference Include="..\Sewer56.Patcher.Regravitified.Te\Sewer56.Patcher.Riders.Te.csproj" Condition="$(DefineConstants.Contains(SRTE))" />
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Common\Sewer56.Patcher.Riders.Common.csproj" />
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Dx\Sewer56.Patcher.Riders.Dx.csproj" Condition="$(DefineConstants.Contains(SRDX)) or $(DefineConstants.Contains(SRDXSelfContained))" />
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Regrav\Sewer56.Patcher.Riders.Regrav.csproj" Condition="$(DefineConstants.Contains(REGRAV))" />
+    <ProjectReference Include="..\Sewer56.Patcher.Riders.Te\Sewer56.Patcher.Riders.Te.csproj" Condition="$(DefineConstants.Contains(SRTE))" />
   </ItemGroup>
 
   <ItemGroup>
