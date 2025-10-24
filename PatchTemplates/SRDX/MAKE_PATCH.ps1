@@ -114,6 +114,36 @@ Write-Host "Generated files:" -ForegroundColor Yellow
 Write-Host "  - Hashes: $ModHashesDir\hashes.json" -ForegroundColor Gray
 Write-Host "  - Patch: $PatchDir" -ForegroundColor Gray
 Write-Host ""
-Write-Host "Remember to remove MAKE_PATCH scripts before uploading!" -ForegroundColor Yellow
-Write-Host "Press key to exit!"
+
+# Step 6: Cleanup
+Write-Host "Complete! Press any key to clean up..." -ForegroundColor Yellow
+Write-Host ""
+Write-Host "The following files will be deleted:" -ForegroundColor Red
+Write-Host "  - Original\Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso" -ForegroundColor Gray
+Write-Host "  - Mod\Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso" -ForegroundColor Gray
+Write-Host "  - MAKE_PATCH.bat" -ForegroundColor Gray
+Write-Host "  - MAKE_PATCH.ps1" -ForegroundColor Gray
+Write-Host "  - MAKE_PATCH.sh" -ForegroundColor Gray
+Write-Host ""
 Wait-ForKey
+
+Write-Host "Cleaning up..." -ForegroundColor Yellow
+
+# Delete ROM files
+$FilesToDelete = @(
+    "Original\Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso",
+    "Mod\Sonic Riders (USA) (En,Ja,Fr,De,Es,It).iso",
+    "MAKE_PATCH.bat",
+    "MAKE_PATCH.ps1",
+    "MAKE_PATCH.sh"
+)
+
+foreach ($File in $FilesToDelete) {
+    if (Test-Path $File) {
+        Remove-Item $File -Force
+        Write-Host "Deleted: $File" -ForegroundColor Green
+    }
+}
+
+Write-Host ""
+Write-Host "Cleanup complete! Package is ready for upload." -ForegroundColor Cyan
