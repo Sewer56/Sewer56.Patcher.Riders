@@ -12,10 +12,11 @@
           SRDX
           SRDXSelfContained   # This one includes full ROM. Only hashchecks existing ROM.
           REGRAV
+          SRTE
           
           DEV # Enables some developer tools.
     -->
-    <DefineConstants>$(DefineConstants);SRDX</DefineConstants>
+    <DefineConstants>$(DefineConstants);SRTE</DefineConstants>
     <PublishDir>../Publish</PublishDir>
 
     <!-- Common Publish Options -->

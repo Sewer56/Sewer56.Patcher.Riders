@@ -26,6 +26,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NKit", "Submodules\NKit\NKit\NKit.csproj", "{7B7C6C51-4581-4F59-AE5C-F40B779680AE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sewer56.Patcher.Riders.Te", "Sewer56.Patcher.Regravitified.Te\Sewer56.Patcher.Riders.Te.csproj", "{9E337F9B-9B81-4C35-9908-60203FB3285B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -64,6 +66,10 @@ Global
 		{7B7C6C51-4581-4F59-AE5C-F40B779680AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B7C6C51-4581-4F59-AE5C-F40B779680AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7B7C6C51-4581-4F59-AE5C-F40B779680AE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9E337F9B-9B81-4C35-9908-60203FB3285B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9E337F9B-9B81-4C35-9908-60203FB3285B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9E337F9B-9B81-4C35-9908-60203FB3285B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9E337F9B-9B81-4C35-9908-60203FB3285B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
