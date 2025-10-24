@@ -4,6 +4,10 @@
   - [Creating Self Contained Riders Patches \[DefineConstants == 'SRDXSelfContained'\]](#creating-self-contained-riders-patches-defineconstants--srdxselfcontained)
   - [Creating Patches for Zero Gravity \[DefineConstants == 'REGRAV'\]](#creating-patches-for-zero-gravity-defineconstants--regrav)
 
+If you've never ran the patcher before, download .NET 9 first:
+
+- Windows: https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-desktop-9.0.10-windows-x64-installer
+
 # Generating Patches
 
 The patcher is actually a command line program that displays a UI only if it receives no parameters.
