@@ -1,8 +1,8 @@
 - [Generating Patches](#generating-patches)
   - [Creating Patches for Original Riders to SRDX \[DefineConstants == 'SRDX'\]](#creating-patches-for-original-riders-to-srdx-defineconstants--srdx)
   - [Creating Patches for Original Riders to SRTE \[DefineConstants == 'SRTE'\]](#creating-patches-for-original-riders-to-srte-defineconstants--srte)
-  - [Creating Patches for Zero Gravity \[DefineConstants == 'REGRAV'\]](#creating-patches-for-zero-gravity-defineconstants--regrav)
   - [Creating Self Contained Riders Patches \[DefineConstants == 'SRDXSelfContained'\]](#creating-self-contained-riders-patches-defineconstants--srdxselfcontained)
+  - [Creating Patches for Zero Gravity \[DefineConstants == 'REGRAV'\]](#creating-patches-for-zero-gravity-defineconstants--regrav)
 
 # Generating Patches
 
@@ -60,6 +60,18 @@ For simplicity, patch generation was simplified down with scripts.
 3. ...
 4. Profit!
 
+## Creating Self Contained Riders Patches [DefineConstants == 'SRDXSelfContained']
+
+These patches contain the full game on board and use a simple hash check to verify legal ownership of an existing Riders ROM.
+To create these, you will need to build the patcher with `<DefineConstants>;SRDXSelfContained;DEV</DefineConstants>`.
+
+1. Copy the contents of `PatchTemplates/SRDXSelfContained` to patcher folder.
+   - `Assets` folder and `MAKE_PATCH` scripts.
+2. Run `MAKE_PATCH` script.
+3. ...
+4. Build patcher again without `DEV` constant. `<DefineConstants>;SRDXSelfContained</DefineConstants>`
+5. Profit!
+
 ## Creating Patches for Zero Gravity [DefineConstants == 'REGRAV']
 
 1. Copy the `Assets` folder from last released patch.  
@@ -85,20 +97,3 @@ Hashes are used for verifying whether the ROM is correct before repacking it dur
 
    - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.  
    - Place patch in `Assets\RG\Patches\To Regrav\US 1.0.1 to Regrav`.  
-
-## Creating Self Contained Riders Patches [DefineConstants == 'SRDXSelfContained']
-
-These patches contain the full game on board and use a simple hash check to verify legal ownership of an existing Riders ROM.
-To create these, you will need to build the patcher with `<DefineConstants>DEV</DefineConstants>`.  
-
-1. Create Self Contained Bundle:  
-
-   - Run `Sewer56.Patcher.Riders.Cli.exe CreateSelfContained`.  
-   - Place the output file in `Assets/Bundle.patch`.  
-
-2. Update the source code:  
-
-   - In `DxSelfContainedPatch.cs`, update the XOR key to align with your created file.  
-   - Update the hashes, to include any more recently released ROMs.  
-
-Build with `<DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstants>` when publishing to end users.
