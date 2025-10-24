@@ -1,10 +1,22 @@
+- [Generating Patches](#generating-patches)
+  - [Creating Patches for Original Riders to SRDX \[DefineConstants == 'SRDX'\]](#creating-patches-for-original-riders-to-srdx-defineconstants--srdx)
+  - [Creating Patches for Original Riders to SRTE \[DefineConstants == 'SRTE'\]](#creating-patches-for-original-riders-to-srte-defineconstants--srte)
+  - [Creating Patches for Zero Gravity \[DefineConstants == 'REGRAV'\]](#creating-patches-for-zero-gravity-defineconstants--regrav)
+  - [Creating Self Contained Riders Patches \[DefineConstants == 'SRDXSelfContained'\]](#creating-self-contained-riders-patches-defineconstants--srdxselfcontained)
 
-## Generating Patches
+# Generating Patches
 
 The patcher is actually a command line program that displays a UI only if it receives no parameters.
+
 For reference, try:
 ```
 .\Sewer56.Patcher.Riders.Cli.exe --help
+```
+
+or, if no `EXE` file is present
+
+```
+dotnet Sewer56.Patcher.Riders.Cli.dll --help
 ```
 
 You will get the following:
@@ -36,6 +48,48 @@ Created by Sewer56, licensed under GNU GPL V3
 Please note for generating patches you'll need around 6GB of spare RAM to do this.  
 It will also take a while, so go watch an episode of Anime.  
 
+## Creating Patches for Original Riders to SRDX [DefineConstants == 'SRDX']
+
+1. Copy the `Assets` folder from last released patch.
+   - This includes the existing hashes for vanilla ROMs, etc.  
+
+2. Generate Hashes for new Mod ISO.  
+
+   - To do this, run `Sewer56.Patcher.Riders.Cli.exe GenerateHashes`.  
+   - Place new `hashes.json` file in `Assets\DX\Hashes\DX ROM`.  
+
+3. Extract and verify your copy of the NTSC-U Version of Sonic Riders.  
+
+   - Must be a good dump, e.g. the one from Vimm's Lair.  
+   - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.  
+   - Use the hashes in `Assets\DX\Hashes\Original ROM`.  
+
+4. Generate new patch from NTSC-U to SRDX.  
+
+   - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.  
+   - Place patch in `Assets\DX\Patches\Vanilla to DX\Patch`.  
+
+## Creating Patches for Original Riders to SRTE [DefineConstants == 'SRTE']
+
+1. Copy the `Assets` folder from last released patch.
+   - This includes the existing hashes for vanilla ROMs, etc.
+
+2. Generate Hashes for new Mod ISO.
+
+   - To do this, run `Sewer56.Patcher.Riders.Cli.exe GenerateHashes`.
+   - Place new `hashes.json` file in `Assets\TE\Hashes\TE ROM`.
+
+3. Extract and verify your copy of the NTSC-U Version of Sonic Riders.
+
+   - Must be a good dump, e.g. the one from Vimm's Lair.
+   - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.
+   - Use the hashes in `Assets\TE\Hashes\Original ROM`.
+
+4. Generate new patch from NTSC-U to SRTE.
+
+   - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.
+   - Place patch in `Assets\TE\Patches\Vanilla to TE\Patch`.
+
 ## Creating Patches for Zero Gravity [DefineConstants == 'REGRAV']
 
 1. Copy the `Assets` folder from last released patch.  
@@ -62,27 +116,6 @@ Hashes are used for verifying whether the ROM is correct before repacking it dur
    - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.  
    - Place patch in `Assets\RG\Patches\To Regrav\US 1.0.1 to Regrav`.  
 
-## Creating Patches for Original Riders to SRDX [DefineConstants == 'SRDX']
-
-1. Copy the `Assets` folder from last released patch.
-   - This includes the existing hashes for vanilla ROMs, etc.  
-
-2. Generate Hashes for new Mod ISO.  
-
-   - To do this, run `Sewer56.Patcher.Riders.Cli.exe GenerateHashes`.  
-   - Place new `hashes.json` file in `Assets\DX\Hashes\DX ROM`.  
-
-3. Extract and verify your copy of the NTSC-U Version of Sonic Riders.  
-
-   - Must be a good dump, e.g. the one from Vimm's Lair.  
-   - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.  
-   - Use the hashes in `Assets\DX\Hashes\Original ROM`.  
-
-4. Generate new patch from NTSC-U to SRDX.  
-
-   - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.  
-   - Place patch in `Assets\DX\Patches\Vanilla to DX\Patch`.  
-
 ## Creating Self Contained Riders Patches [DefineConstants == 'SRDXSelfContained']
 
 These patches contain the full game on board and use a simple hash check to verify legal ownership of an existing Riders ROM.
@@ -99,24 +132,3 @@ To create these, you will need to build the patcher with `<DefineConstants>DEV</
    - Update the hashes, to include any more recently released ROMs.  
 
 Build with `<DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstants>` when publishing to end users.
-
-## Creating Patches for Original Riders to SRTE [DefineConstants == 'SRTE']
-
-1. Copy the `Assets` folder from last released patch.
-   - This includes the existing hashes for vanilla ROMs, etc.
-
-2. Generate Hashes for new Mod ISO.
-
-   - To do this, run `Sewer56.Patcher.Riders.Cli.exe GenerateHashes`.
-   - Place new `hashes.json` file in `Assets\TE\Hashes\TE ROM`.
-
-3. Extract and verify your copy of the NTSC-U Version of Sonic Riders.
-
-   - Must be a good dump, e.g. the one from Vimm's Lair.
-   - Verify your dump using `Sewer56.Patcher.Riders.Cli.exe VerifyHashes`.
-   - Use the hashes in `Assets\TE\Hashes\Original ROM`.
-
-4. Generate new patch from NTSC-U to SRTE.
-
-   - Run `Sewer56.Patcher.Riders.Cli.exe GeneratePatch`.
-   - Place patch in `Assets\TE\Patches\Vanilla to TE\Patch`.
