@@ -7,7 +7,7 @@ Was originally created for [Riders Regravitified](https://www.youtube.com/watch?
 ![Preview](./Readme_Preview.png)
 
 ## Building
-- Download [.NET 7](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) and [Visual Studio 2022+](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false) or [Rider](https://www.jetbrains.com/rider/download/#section=windows).  
+- Download [.NET 9](https://dotnet.microsoft.com/en-us/download/dotnet/7.0) and [Visual Studio 2022+](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=Community&channel=Release&version=VS2022&source=VSLandingPage&cid=2030&passive=false) or [Rider](https://www.jetbrains.com/rider/download/#section=windows).  
 - Clone this repository (and all submodules).  
 - Open the solution `Sewer56.Patcher.Regravitified.sln`.  
 - Build.
@@ -194,7 +194,7 @@ Build with `<DefineConstants>$(DefineConstants);SRDXSelfContained</DefineConstan
 
 ```
 Prerequisites
-- Install the .NET 7 Runtime for your Platform.
+- Install the .NET 9 Runtime for your Platform.
 
 Run from Terminal:
 - dotnet ./Sewer56.Patcher.Riders.Cli.dll PatchGame --rom "./Sonic Riders - Zero Gravity (USA) (En,Ja,Fr,De,Es,It).wbfs"
