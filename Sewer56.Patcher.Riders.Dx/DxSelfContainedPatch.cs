@@ -64,10 +64,10 @@ namespace Sewer56.Patcher.Riders.Dx
         public async Task ApplyPatch(string isoPath, string outputPath, Events.ProgressCallback reportProgress = null)
         {
             reportProgress?.Invoke("Patching ROM from Bundle", 0.0f);
-            var isoStream      = new FileStream(isoPath, FileMode.Open);
-            var unpackRomTask  = Task.Run(() =>
+            var isoStream = new FileStream(isoPath, FileMode.Open);
+            var unpackRomTask = Task.Run(() =>
             {
-                var memoryStream = new MemoryStream(GC.AllocateUninitializedArray<byte>(1459978240)); // Max GCN ROM Size
+                var memoryStream = new MemoryStream(1459978240); // Max GCN ROM Size
                 var bundleData = File.ReadAllBytes(Assets.AssetsBundlePath);
 
                 // Unscramble.
@@ -94,7 +94,7 @@ namespace Sewer56.Patcher.Riders.Dx
 
             if (!KnownHashes.Contains(hash))
                 throw new Exception("Unsupported ROM: Provided ROM to patch is not a supported ROM.");
-            
+
             var romStream = await unpackRomTask;
 
             // Truncate Memory Stream.
