@@ -86,6 +86,7 @@ Write-Host ""
 # Step 5: Generate patch from Original to MOD
 Write-Host "Step 5: Generating patch from Original to MOD..." -ForegroundColor Yellow
 Write-Host "This may take a while (6GB RAM required). Go watch an anime episode!" -ForegroundColor Gray
+Write-Host "Give it 15-20 minutes. No, it's not stuck." -ForegroundColor Gray
 $PatchDir = "Assets\DX\Patches\Vanilla to DX\Patch"
 if (-not (Test-Path $PatchDir)) {
     New-Item -Path $PatchDir -ItemType Directory -Force | Out-Null
