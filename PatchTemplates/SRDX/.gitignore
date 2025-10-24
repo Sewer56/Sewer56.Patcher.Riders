@@ -1,0 +1,20 @@
+# Ignore everything by default
+*
+
+# Allow MAKE_PATCH scripts
+!MAKE_PATCH.bat
+!MAKE_PATCH.sh
+!MAKE_PATCH.ps1
+
+# Allow Assets folder and its contents
+!Assets/
+!Assets/**
+
+# Allow Original and Mod folders (but only .gitkeep files inside)
+!Original/
+!Original/.gitkeep
+!Mod/
+!Mod/.gitkeep
+
+# Allow .gitignore itself
+!.gitignore
