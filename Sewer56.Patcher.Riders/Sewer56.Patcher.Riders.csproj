@@ -16,6 +16,7 @@
     <ApplicationIcon Condition="$(DefineConstants.Contains(SRTE))">..\Sewer56.Patcher.Riders.Te\Theme\Te\Images\SRTE_Icon.ico</ApplicationIcon>
 
     <GenerateBootstrapperOnBuild>true</GenerateBootstrapperOnBuild>
+    <ValidateExecutableReferencesMatchSelfContained>false</ValidateExecutableReferencesMatchSelfContained>
   </PropertyGroup>
 
   <ItemGroup>
