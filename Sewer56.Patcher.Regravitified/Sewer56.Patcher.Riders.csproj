@@ -49,12 +49,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Reloaded.WPF.Animations">
-      <HintPath>..\..\..\Reloaded.WPF\Source\Reloaded.WPF.Animations\bin\Debug\netcoreapp3.0\Reloaded.WPF.Animations.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="lhs_rld10.xm">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
