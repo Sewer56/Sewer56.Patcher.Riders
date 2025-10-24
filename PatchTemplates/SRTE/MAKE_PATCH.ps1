@@ -46,14 +46,14 @@ Write-Host ""
 
 # Step 2: Check for Assets folder
 Write-Host "Step 2: Checking for Assets folder..." -ForegroundColor Yellow
-Test-RequiredFile "Assets\TE\Hashes\Original ROM\hashes.json" "Original ROM hashes"
+Test-RequiredFile "Assets\TE\Hashes\Original_ROM\hashes.json" "Original ROM hashes"
 Write-Host ""
 
 # Step 3: Verify original ROM
 Write-Host "Step 3: Verifying original ROM..." -ForegroundColor Yellow
 Write-Host "This ensures you have a good dump (e.g., from Vimm's Lair)" -ForegroundColor Gray
 
-Invoke-PatcherCli @("VerifyHashes", "--tgt", "Original", "--hash", "Assets\TE\Hashes\Original ROM")
+Invoke-PatcherCli @("VerifyHashes", "--tgt", "Original", "--hash", "Assets\TE\Hashes\Original_ROM")
 
 if ($LASTEXITCODE -ne 0) {
     Write-Host "Original ROM verification FAILED!" -ForegroundColor Red
@@ -67,7 +67,7 @@ Write-Host ""
 
 # Step 4: Generate hashes for MOD.iso
 Write-Host "Step 4: Generating hashes for MOD.iso..." -ForegroundColor Yellow
-$ModHashesDir = "Assets\TE\Hashes\TE ROM"
+$ModHashesDir = "Assets\TE\Hashes\TE_ROM"
 if (-not (Test-Path $ModHashesDir)) {
     New-Item -Path $ModHashesDir -ItemType Directory -Force | Out-Null
 }
@@ -87,7 +87,7 @@ Write-Host ""
 Write-Host "Step 5: Generating patch from Original to MOD..." -ForegroundColor Yellow
 Write-Host "This may take a while (6GB RAM required). Go watch an anime episode!" -ForegroundColor Gray
 Write-Host "Give it 15-20 minutes. No, it's not stuck." -ForegroundColor Gray
-$PatchDir = "Assets\TE\Patches\Vanilla to TE\Patch"
+$PatchDir = "Assets\TE\Patches\Vanilla_to_TE\Patch"
 if (-not (Test-Path $PatchDir)) {
     New-Item -Path $PatchDir -ItemType Directory -Force | Out-Null
 }
